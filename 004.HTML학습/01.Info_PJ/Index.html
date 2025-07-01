@@ -6,8 +6,46 @@
     <meta charset="UTF-8" />
     <!-- 모바일 크기처리 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>네이버 요약 뉴스</title>
     <!-- 탭메뉴출력 타이틀 -->
+    <title>네이버 요약 뉴스</title>
+    <!-- 스타일시트 인터널방식 코딩구역 -->
+     <style>
+     /* CSS문법만 사용하는 구역! */
+     /* 기본문법=
+     선택자{속성: 값;}*/
+
+     /* 기본값 초기화 - 마진,패딩 0 */
+     html, body, h1, h2, h3, ul{
+      margin: 0;
+      padding: 0;
+     }
+
+     /* 1.상단영역 */
+      .top-area{
+        /* 테두리 bd - border:두께 종류 색상 */
+      border: 10px dotted hotpink;
+      /* 글자중앙정렬 tac */
+      text-align: center;
+    }
+    /* 메뉴박스*/
+    .menu ul{
+      /* 기본블릿없앰 */
+      list-style: none;
+      /* 자식요소 옆으로 흐르게
+      -> 플렉스는 나중에 적용! */
+       /* display: flex; */
+       /* 사이간격 */
+        /* gap: 10px; */
+      }
+
+      /* 리스트 요소 */
+      .menu li{
+       /* 인라인 블록으로 display 변경 */
+       display: inline-block;
+       /* 패딩 p - padding: 위아래 양쪽 */
+       padding: 0 5px;
+      }
+     </style>
   </head>
   <!-- body요소 : 웹문서 본문출력 -->
   <body>
@@ -17,22 +55,17 @@
     <!-- h1요소 : 큰제목 -->
       <!-- div요소 : 내용구분박스  -->
       <nav class="menu">
-        <ul style="list-style: none; display: flex; gap: 10px;">
-         <li>
-        네이버로고
-         </li>
-         <li>
-        경제
-         </li>
-         <li>
-        사회
-         </li>
-         <li>
-        IT/과학
-         </li>
-         <li>
-        TV/연예
-         </li>
+        <!-- style속성의 값으로 CSS를 세팅할 수 있다. -->    
+        <!-- <ul style="list-style: none; display: flex; gap: 10px;"> -->
+          <!-- ul요소: 
+           순서없는 리스트(unordered list
+           -> 하위 필수요소는 li다!(반드시 사용!)) -->
+           <ul>
+          <li>네이버로고</li>
+         <li>경제</li>
+         <li>사회</li>
+         <li>IT/과학</li>
+         <li>TV/연예</li>
          </ul>
       </nav>
     </header>
