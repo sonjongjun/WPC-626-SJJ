@@ -85,6 +85,9 @@ ul {
   text-shadow: 
   /* 4방향으로 그림자 1px씩 보냄 */ 1px 0 #000, -1px 0 #000,
     0 1px #000, 0 -1px #000, /* 그림자셋팅은 5줄에서 */ 3px 3px 2px #00000088;
+
+    /* 하단마진 (mb) */
+    margin-bottom: 20px;
 }
 
 /* 메뉴박스*/
@@ -124,15 +127,15 @@ ul {
 }
 /* a에 마우스 오버시 -> 요소:hover
 가상클래스 :hover사용!*/
-.menu a:hover{
-/* 글자색변경 */
-color: #1a5cac;
-/* 윗줄 생성 (tdo)*/
-text-decoration: overline;
-/* 줄종류 변경 (tds) */
-text-decoration-style: dashed;
-/* 그림자생성(ts) */
-text-shadow: 2px 2px 2px #00000066;
+.menu a:hover {
+  /* 글자색변경 */
+  color: #1a5cac;
+  /* 윗줄 생성 (tdo)*/
+  text-decoration: overline;
+  /* 줄종류 변경 (tds) */
+  text-decoration-style: dashed;
+  /* 그림자생성(ts) */
+  text-shadow: 2px 2px 2px #00000066;
 }
 
 /* 네이버 로고 */
@@ -188,4 +191,16 @@ text-shadow: 2px 2px 2px #00000066;
   text-align: center;
   /* 배경색 bgc */
   background-color: #2f7294;
+}
+/* 주소요소 */
+.bottom-area address {
+  /* 기본 이탤릭 해제! (fsn) */
+  font-style: normal;
+  font-size:25px ;
+  /* 줄간격 lh-> Line-Hight 
+  값으로 기본 숫자만 쓰는 배수를 사용함(글자크기 기준)
+  단위를 사용하면 구체적인 크기로 줄간격 사용가능 ex)20px */
+  line-height: 1.7;
+/* 글자색 */
+color: #0000007a;
 }
