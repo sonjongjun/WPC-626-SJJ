@@ -130,7 +130,7 @@ ul {
   /* 윗줄 생성 (tdo)*/
   text-decoration: overline;
   /* 줄종류 변경 (tds) */
-  text-decoration-style: d;
+  text-decoration-style: dashed;
   /* 그림자생성(ts) */
   text-shadow: 2px 2px 2px #00000066;
 }
@@ -187,7 +187,7 @@ ul {
   /* 블록내부 인라인 중앙정렬 */
   text-align: center;
   /* 배경색 bgc */
-  background-color: #2f7294;
+  background-color: #0f88c5;
 }
 /* 주소요소 */
 .bottom-area address {

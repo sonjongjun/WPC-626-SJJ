@@ -2,7 +2,167 @@
 /* 서브 페이지 CSS - sub.css */
 
 /* 공통 외부 CSS불러오기 */
-
 /* @import url(경로/파일명); */
-@import url(./common.css
-);
+
+/* 초기화 CSS */
+@import url(reset.css);
+/* 상단,하단 공통모듈 */
+@import url(./common.css);
+
+/* 공통설정 */
+/* .main-area 직계자식(>) 모두 선택
+별(*)은 모든것을 선택하는 문자열 */
+.main-area > * {
+  margin-bottom: 20px;
+}
+
+/* 2-1 서브타이틀 */
+.sub-title {
+  /* (1)박스디자인 */
+  /* 패딩 p40 */
+  padding: 40px;
+  /* 글자중앙 tac */
+  text-align: center;
+  /* 테두리bd */
+  border: 2px solid #17bd3b;
+  /* 둥근모서리 bdrs */
+  border-radius: 20px;
+
+  /* 배경공통 */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  /* 배경넣기 bg-> 색이반고윙/크*/
+  /* background: url(../images/titbg4.jpg) no-repeat 0 / cover; */
+
+  /* (2)글자디자인 */
+  font-family: "Dongle";
+  /* 글자크기 fz30 */
+  font-size: 50px;
+  /* 글자테두리 -webtst ->테두리를 얇게 하려면 px단위 숫자를 소수점 아래로! */
+  -webkit-text-stroke: 0.5px black;
+  /* 접두어란? 
+  속성앞에 -webkit- 라고 쓰면 크롬, 사파리 브라우저용 속성임
+  -ms- 마이크로 소프트
+  -o- 오페라 브라우저
+  -moz- 파이어폭스
+  이 속성은 이미 공식적으로는 아니지만 다른 최신브라우저에서 사용됨*/
+}
+/* 각 서브별 개별타이틀 세팅변경하기 */
+/* (1) 경제페이지  */
+.economy {
+  background-image: url(../images/titbg2.jpg);
+  color: #ff7b00;
+}
+/* (2) 사회페이지  */
+.social {
+  background-image: url(../images/titbg3.jpg);
+  color: #0fef08;
+}
+/* (3) IT/과학페이지  */
+.it {
+  background-image: url(../images/titbg4.jpg);
+  color: #6b63bd;
+}
+/* (4) TV/연예페이지  */
+.tv {
+  background-image: url(../images/titbg5.jpg);
+  color: #ff0055;
+}
+/* 2-2. 언론사로고 */
+.press-logo img {
+  height: 32px;
+}
+/* 2-3. 기사제목 */
+.article-title {
+  font-size: 33px;
+}
+
+/* 스페셜 박스(추가정보) */
+.special-box {
+  font-size: 18px;
+}
+/* 스페셜박스 제목 */
+.special-box h4 {
+  /* 왼족 보더 */
+  border-left: 3px solid #000;
+  /* 왼쪽패딩 */
+  padding-left: 20px;
+  /* 아래쪽 간격 */
+  margin-bottom: 40px;
+}
+/* 스페셜 내용 */
+.special-box p {
+  line-height: 1.7;
+}
+/* 2-4. 기사사진  */
+/* figure요소의 기본 마진,패딩 초기화 */
+.article-picture img {
+  width: 100%;
+}
+/* 이미지설명 */
+.article-picture figcaption {
+  /* 박스설정 */
+  text-align: center;
+  /* 마진 위아래 20 */
+  margin: 20px;
+  /* 글자설정 */
+  font-size: 15px;
+  color: #555;
+}
+/* 2-5. 기사내용 */
+.contents p {
+  /* 글자설정 */
+  font-size: 18px;
+  /* 줄간격lh px는 픽셀값 숫자값은 배수로 간다*/
+  line-height: 1.7;
+}
+
+/* 2-6. 기자정보 */
+.reporter {
+  font-size: 16px;
+  color: #333;
+}
+/* 2-7. 기사원문 */
+.article-link {
+  /* 인라인 오른쪽 정렬 */
+  text-align: right;
+}
+/* 버튼 a요소 */
+.article-link a {
+  /* 디자인 적용 및 부모박스의 문자열 정렬 적용되도록 인라인블록으로 변경 */
+  display: inline-block;
+  /* (1)박스설정 */
+  width: 100px;
+  height: 100px;
+  border: 2px solid #c43f3f;
+  border-radius: 50%;
+  text-align: center;
+  background-color: rgba(7, 234, 234, 0.859);
+  line-height: 100px;
+  /* 글자설정 */
+  font-family: jua;
+  font-size: 20px;
+  color: #bd8a63;
+}
+/* 버튼 a 마우스 오버시 
+-> 가상클래스 :hover사용*/
+.article-link a:hover {
+  /* 배경색 */
+  background-color: #ff0055;
+  /* 박스그림자
+    box-shadow:
+    inset(내부그림자) x축 y축 블러 확장 그림자색; 
+    ->글자 그림자에는 없는 "확장"(spread)가 있음
+    그림자 확장 가능
+    그리고 콤마로 설정을 연결하면 여러개의 그림자 사용가능*/
+  box-shadow: inset 0 0 5px 5px#00000098,
+    /* 외부그림자 */ 
+    4px 4px 3px rgba(0, 0, 0, 0.821);
+    /* 그냥 내가 넣은거 */
+    color:blue;
+    text-decoration-line: overline;
+    text-decoration-style: wavy;
+    
+}
