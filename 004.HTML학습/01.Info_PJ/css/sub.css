@@ -125,8 +125,8 @@
    display: block;
   /* 박스설정 */
 background-color: brown;
-    padding: 60px;
-    border-bottom: 2px solid #222;
+padding: 60px;
+border-bottom: 2px solid #222;
     border-top: 2px solid #222;
     margin: 20px 100px;
     /* 글자설정 */
