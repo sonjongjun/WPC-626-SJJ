@@ -36,20 +36,21 @@ a {
   /* 밑줄없앰 */
   text-decoration: none;
 
-  /* 4. 이미지 초기화 */
-  img {
-    /* 이미지링크시 서버에 올리면 테두리가 생김 
-        이것을 없앰*/
-    border: none;
-
-    /* 블록박스내에 단독 이미지를 넣을면 하단에 4px정도의 공백이 생김 이것을 초기화 
-        값은 top/middle/bottom중 아무거나!*/
-    vertical-align: top;
-  }
-  /* ul,ol 초기화 */
-  ul,
-  ol {
-    /* 블릿,번호 없앰 */
-    list-style: none;
-  }
 }
+/* 4. 이미지 초기화 */
+img {
+  /* 이미지링크시 서버에 올리면 테두리가 생김 
+      이것을 없앰*/
+  border: none;
+
+  /* 블록박스내에 단독 이미지를 넣을면 하단에 4px정도의 공백이 생김 이것을 초기화 
+      값은 top/middle/bottom중 아무거나!*/
+  vertical-align: top;
+}
+/* ul,ol 초기화 */
+ul,
+ol {
+  /* 블릿,번호 없앰 */
+  list-style: none;
+}
+  

@@ -199,18 +199,18 @@
       <sub>- 아래 첨자 텍스트
       <sup>- 상위 첨자 텍스트 -->
 
-        <!-- 2-6. 기자정보 -->
-      <div class="reporter">이주영(scitech@yna.co.kr)<br>
+      <!-- 2-6. 기자정보 -->
+      <div class="reporter">
+        이주영(scitech@yna.co.kr)<br />
         <bdo dir="rtl">정확하고 신속하게 보도하는 좋은기자</bdo>
-
-
       </div>
       <!-- 2-7. 기사원문 -->
       <div class="article-link">
         <a
           href="https://n.news.naver.com/mnews/hotissue/article/001/0015470776?type=series&cid=1087298"
           target="_blank"
-          >기사원문</a>
+          >기사원문</a
+        >
         <!-- 
           a링크 설정시 href에는 이동할 페이지 주소
           target="_blank"는 새창으로 열 경우 사용함!
@@ -218,25 +218,150 @@
       </div>
 
       <!-- 2-8. 오늘의 작품&느낌 -->
-       <article class="work">
+      <article class="work">
         <!-- 제목 -->
-         <h4>오늘의 작품&amp;느낌</h4>
+        <h4>오늘의 작품&amp;느낌</h4>
         <!-- 그림박스 -->
-         <figure>
-          <img src="./images/img_the_scream.jpg" alt="뭉크의 절규">
+        <figure>
+          <img src="./images/img_the_scream.jpg" alt="뭉크의 절규" />
           <!-- 이미지 설명 -->
-           <figcaption>
-            뭉크의 &lt;<cite>절규</cite>&gt;
-           </figcaption>
-         </figure>
-       </article>
-       <!-- [ html 태그 내부에서 특수문자처리 ] 
+          <figcaption>뭉크의 &lt;<cite>절규</cite>&gt;</figcaption>
+        </figure>
+      </article>
+      <!-- [ html 태그 내부에서 특수문자처리 ] 
         &나 <>태그에 사용하는 기호 등은
         특수문자인데 아래와 같이 처리함
         &는 &amp; (amp는 엠퍼센드)
         <는 &lt; (less than)
         >는 &gt; (greater than)
         로 표기한다-->
+
+      <!-- 테크뉴스 : ul 사용 -->
+      <article class="tech-news news-box">
+        <!-- 제목 -->
+        <h3>테크뉴스</h3>
+        <!-- ul li는 반드시 같이 사용해야함!
+         ul은 순서 없는 리스트이다(unorderd list) -->
+        <ul>
+          <li>
+            <a
+              href="https://n.news.naver.com/mnews/hotissue/article/001/0015473464?type=series&cid=1087298"
+              target="_blank"
+            >
+              "깊은 수면, '유레카 순간'으로 이어질 가능성 높다"
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://n.news.naver.com/mnews/hotissue/article/001/0015470559?type=series&cid=1087298"
+              target="_blank"
+            >
+              제임스웹, 110광년 밖 원시행성원반서 준목성급 외계행성 포착
+            </a>
+          </li>
+        </ul>
+      </article>
+      <!-- 랭킹뉴스 : ol사용   -->
+      <artticle class="rank-news news-box">
+        <!-- 제목 -->
+        <h3>랭킹뉴스</h3>
+        <!-- ol li는 반드시 같이 사용해야함
+    ol은 순서있는 뉴스(orderd list) -->
+        <ol>
+          <li>
+            <a
+              href="https://n.news.naver.com/mnews/article/277/0005622169"
+              target="_blank"
+              >"배경훈 "AI 3대 강국 도약…AI·R&D·인재에 국가역량 결집"</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://n.news.naver.com/mnews/article/029/0002967943"
+              target="_blank"
+            ></a
+            >"차세대 숏폼 작가 모여라…KT스튜디오지니, 극본 공모전 개최"
+          </li>
+          <li>
+            <a
+              href="https://n.news.naver.com/mnews/article/215/0001216034"
+              target="_blank"
+              >"삼성전자, '갤럭시 Z 스튜디오' 더현대 서울서 오픈"</a
+            >
+          </li>
+        </ol>
+      </artticle>
+      <!-- 분야별 뉴스: dl >dt,dd  -->
+      <article class="sec-news news-box">
+        <!-- 제목 -->
+        <h3>분야별 뉴스</h3>
+        <!-- dl은 반드시 dt,dd가 나와야함 -->
+        <dl>
+          <!-- 경제파트 -->
+          <dt>경제</dt>
+          <dd>
+            <a
+              href="https://n.news.naver.com/mnews/article/056/0011988585"
+              target="_blank"
+              >올해 상반기 ICT 수출액, 역대 상반기 2위 기록</a
+            >
+          </dd>
+          <dd>
+            <a
+              href="https://n.news.naver.com/mnews/article/662/0000073000"
+              target="_blank"
+              >“고의사고 자주 발생한 구간입니다”…내비게이션 음성 안내</a
+            >
+          </dd>
+          <!-- tv/연예파트 -->
+          <dt>tv/연예</dt>
+          <dd>
+            <a
+              href="https://m.entertain.naver.com/home/article/477/0000559701"
+              target="_blank"
+              >[단독]배우 강서하, 13일 위암 투병 끝 별세…향년 31세</a
+            >
+          </dd>
+          <dd>
+            <a
+              href="https://m.entertain.naver.com/home/article/003/0013360414"
+              target="_blank"
+              >박하나, 할머니 손잡고 신부 입장…눈물 펑펑</a
+            >
+          </dd>
+          <!-- 사회파트 -->
+          <dt>사회</dt>
+          <dd>
+            <a
+              href="https://n.news.naver.com/mnews/article/008/0005221252"
+              target="_blank"
+              >직원 구하려다 참변…'맨홀 사고' 업체 대표 결국 숨져…장기기증</a
+            >
+          </dd>
+          <dd>
+            <a
+              href="https://n.news.naver.com/mnews/article/079/0004044514"
+              target="_blank"
+              >경찰, '리박스쿨' 대통령실 압력 의혹 수사 착수</a
+            >
+          </dd>
+        </dl>
+      </article>
+
+      <!-- 
+      [ 용어정의 리스트 : dl> dt+dd ] 
+      dl : 용어리스트
+      (defines the description list)
+      dt : 용어
+      (defines the term)
+      dd : 용어설명
+      (description each term)
+      __________________________________
+
+      주의 - dl은 반드시 자식요소로 dt와 dd가
+      한번이상 사용되어야 함!
+      주의2 dt와 dd는 형제관계임 (부모자식이 아니다)
+      -->
     </main>
 
     <!--*********** 3. 하단영역 ***********-->
