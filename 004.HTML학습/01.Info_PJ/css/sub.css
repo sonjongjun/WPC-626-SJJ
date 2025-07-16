@@ -120,21 +120,21 @@
 }
 
 /* mark요소 디자인변경 */
-.contents mark{
+.contents mark {
   /* 기존 inline에서 block로 변경 */
-   display: block;
+  display: block;
   /* 박스설정 */
-background-color: brown;
-padding: 60px;
-border-bottom: 2px solid #222;
-    border-top: 2px solid #222;
-    margin: 20px 100px;
-    /* 글자설정 */
-     font-family: fangsong;
-    color: yellow;
-    font-size: 30px;
-     text-shadow: 2px 2px 2px #0000009e;
-  }
+  background-color: brown;
+  padding: 60px;
+  border-bottom: 2px solid #222;
+  border-top: 2px solid #222;
+  margin: 20px 100px;
+  /* 글자설정 */
+  font-family: fangsong;
+  color: yellow;
+  font-size: 30px;
+  text-shadow: 2px 2px 2px #0000009e;
+}
 
 /* 2-6. 기자정보 */
 .reporter {
@@ -175,27 +175,156 @@ border-bottom: 2px solid #222;
     그림자 확장 가능
     그리고 콤마로 설정을 연결하면 여러개의 그림자 사용가능*/
   box-shadow: inset 0 0 5px 5px#00000098,
-    /* 외부그림자 */ 
-    4px 4px 3px rgba(0, 0, 0, 0.821);
-    /* 그냥 내가 넣은거 */
-    color:blue;
-    text-decoration-line: overline;
-    text-decoration-style: wavy;
-    
+    /* 외부그림자 */ 4px 4px 3px rgba(0, 0, 0, 0.821);
+  /* 그냥 내가 넣은거 */
+  color: blue;
+  text-decoration-line: overline;
+  text-decoration-style: wavy;
+}
+/* 기사 설명 공통 박스 디자인 */
+.desc-box {
+  /* 경계선을 위와 아래만 설정함 */
+  border-top: 2px dashed #ccc;
+  border-bottom: 2px dashed #ccc;
+
+  padding: 20px;
+  margin-top: 50px;
+}
+/* 기사 설명 공통 제목 디자인 */
+.desc-box h4 {
+  display: inline-block;
+  font-size: 25px;
+  padding: 15px;
+  border: 2px solid gray;
+  border-radius: 20px;
+  background-color: #ededed;
+  margin-bottom: 17px;
+}
+
+/* 기사 설명 공통 내용박스 디자인
+공통이지만 인용블록은 blockquote이고
+주해는 p요소를 쓰고 있으므로 공통은
+.desc-box h4+ *
+설명: h4요소 다음 형제(+)요소 선택인데
+별(*)을 사용하여 어떤 타입이든 모든 선택함! */
+
+.desc-box h4 + * {
+  font-size: 18px;
+  line-height: 1.7;
+  /* 양쪽정렬은 text-align:justify 로 설정함! */
+  text-align: justify;
+}
+
+/* 인용블록 박스 */
+.quote-box img {
+  width: 200px;
+  /* float속성을 인라인요소에 사용할경우
+    나 자신은 오른쪽에 가고 다른 인라인요소는
+    그 옆으로 흐른다. 이 경우에는 이미지의 글자는
+    한줄만 옆에 오는데 이미지 높이만큼 글자가
+    옆으로 흘러가게 할 때 사용한다 */
+  float: right;
+  margin-left: 20px;
+  border-radius: 20px;
+  box-shadow: 8px 8px 7px #00000057;
 }
 /* 뉴스 공통 박스 디자인 */
 .news-box {
-    border-top: 2px dashed #ccc;
-    padding: 20px;
-    margin-top: 50px;
+  border-top: 2px dashed #ccc;
+  padding: 20px;
+  margin-top: 50px;
 }
 /* 뉴스 공통 제목 디자인 */
 .news-box h3 {
-    display: inline-block;
-    font-size: 25px;
-    padding: 15px;
-    border: 2px solid gray;
-    border-radius: 20px;
-    background-color: #ededed;
-    margin-bottom: 17px;
+  font-size: 25px;
+  padding: 15px;
+  margin-bottom: 17px;
+  background-image: linear-gradient(to right, #d53e3e 30%, orange, white);
+  font-family: "Jua";
+  font-weight: normal;
+  width: 35%;
 }
+
+/* 뉴스 공통 a링크 */
+.news-box a {
+  font-size: 18px;
+  line-height: 38px;
+}
+/* a 오버시 가상클래스 :hover */
+.news-box a:hover {
+  /* 글자색, 글자 그림자 */
+  color: rgb(240, 121, 10);
+  text-shadow: 2px 2px 1px black;
+}
+
+/* 테크뉴스 파트
+가상요소 를 사용하여 앞에 아이콘 넣기
+앞에넣기 ::before
+뒤에넣기 ::after
+-> 필수 속성 -> content  
+*/
+.tech-news a::before {
+  content: "😁";
+}
+.tech-news a::after {
+  content: "😂";
+}
+
+/* 오늘의 작품&느낌 */
+.work {
+  background-image: linear-gradient(104deg, black 30%, orange, white);
+  padding: 10px 46px 20px;
+  text-align: center;
+  /* 박스그림자 : bxsh (inset내부그림자)*/
+  box-shadow: inset 0 0 20px #352828;
+  /* box-shadow: inset x축 y축 블러 확장 색; */
+
+  /* 최대크기 설정시 부모박스가 그 크기보다 작아지면
+    auto로 전환하여 크기가 유동적으로 바뀜*/
+  min-width: 500px;
+  /* 블록요소 무대중앙 */
+  margin: 0 auto;
+  /* 마진 중첩의 원리에 따라 작은 마진값이 큰 마진값 안으로 들어감
+    따라서 위에 마진값인 20px보다 더 큰 값을 주면 위 아래 박스
+    사시의 실제 마진값이 설정된다 */
+  border-radius: 20px;
+  margin-top: 50px;
+}
+/* 제목 */
+.work h4 {
+  font-family: "dongle";
+  font-size: 42px;
+  font-weight: normal;
+  margin-bottom: 21px;
+  color: antiquewhite;
+  -webkit-text-stroke: 0.5px black;
+}
+/* 그림 */
+.work img {
+  border: 20px ridge palegoldenrod;
+  max-width: 50%;
+}
+/* 설명 */
+.work figcaption {
+  font-size: 40px;
+  font-family: "Dongle";
+  color: darkred;
+  -webkit-text-stroke: 0.4px black;
+  margin-top: 10px;
+}
+/* 작품명 */
+.work figcaption cite {
+  font-style: normal;
+  color: #17335f;
+}
+
+/* 그라데이션  ->배경 이미지속성에 쓴다
+예전에는 모두 이미지로 만들었었다
+    [ 선형 그라데이션 : linear-gradient ]
+    linear-gradient(방향,색1,색2,...);
+    linear-gradient(방향,색1 몇%,색2 몇%,...);
+    linear-gradient(각도,색1 몇%,색2 몇%,...);
+    - 옵션 : 
+    1. 방향: to top, to bottom, to left, to right
+    2. 각도: 각도deg
+    3. 콤마로 나열된 색상 뒤에 %수치를 쓰면 비율조정가능 */

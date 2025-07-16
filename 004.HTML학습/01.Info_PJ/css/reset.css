@@ -14,7 +14,8 @@ h6,
 figure,
 ul,
 ol,
-p {
+p,
+blockquote{
   margin: 0;
   padding: 0;
 }
