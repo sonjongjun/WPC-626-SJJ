@@ -255,6 +255,24 @@
         >는 &gt; (greater than)
         로 표기한다-->
 
+      <!-- [ 순서없는 리스트 : ul ]
+          unordered list
+
+          (참고: 블릿옵션
+          https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_ul_type_css)
+
+          [ 순서있는 리스트 : ol ]
+          ordered list
+
+          (참고: 순서표시옵션
+          https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_ol_type_all_css)
+
+          [ ul/ol 공통사항 ]
+          - 하위필수요소 : li (개별리스트)
+          - 주의 : 하위에 li 이외의 블록요소나 
+          그 어떤 요소도 직계자식으로 사용할 수 없다!
+          예) <ul><li></li><div></div></ul> -> 사용불가! -->
+
       <!-- 테크뉴스 : ul 사용 -->
       <article class="tech-news news-box">
         <!-- 제목 -->
@@ -317,8 +335,8 @@
         <!-- 제목 -->
         <h3>분야별 뉴스</h3>
         <!-- dl은 반드시 dt,dd가 나와야함 -->
+        <!-- 경제파트 -->
         <dl>
-          <!-- 경제파트 -->
           <dt>경제</dt>
           <dd>
             <a
@@ -334,7 +352,10 @@
               >“고의사고 자주 발생한 구간입니다”…내비게이션 음성 안내</a
             >
           </dd>
-          <!-- tv/연예파트 -->
+        </dl>
+
+        <!-- tv/연예파트 -->
+        <dl>
           <dt>tv/연예</dt>
           <dd>
             <a
@@ -343,6 +364,7 @@
               >[단독]배우 강서하, 13일 위암 투병 끝 별세…향년 31세</a
             >
           </dd>
+
           <dd>
             <a
               href="https://m.entertain.naver.com/home/article/003/0013360414"
@@ -350,7 +372,10 @@
               >박하나, 할머니 손잡고 신부 입장…눈물 펑펑</a
             >
           </dd>
-          <!-- 사회파트 -->
+        </dl>
+
+        <!-- 사회파트 -->
+        <dl>
           <dt>사회</dt>
           <dd>
             <a
@@ -382,7 +407,83 @@
       주의 - dl은 반드시 자식요소로 dt와 dd가
       한번이상 사용되어야 함!
       주의2 dt와 dd는 형제관계임 (부모자식이 아니다)
-      -->
+      *참고링크*
+      https://www.w3schools.com/html/html_lists_other.asp-->
+
+      <!-- [ 테이블 요소 : table ]
+      table > tbody > tr > td
+      
+      -> tbody는 안쓰고 tr부터 구현해도
+      브라우저가 자동으로 그려준다!
+      
+      주의) table > tr 로 직계선택하게 되면
+      위와 같은 구조적인 이유로 선택되지 않는다!
+      
+      _______________________________
+      
+      ((간단한 테이블 작성시 필수요소 3가지!))
+      table : 테이블 박스 부모요소
+      tr : 테이블 행요소(table row)
+      td : 테이블 데이터요소(table data) -->
+
+      <!-- 사진뉴스 박스 :table사용 -->
+      <article class="photo-news news-box">
+        <!-- 제목 -->
+        <h3>사진뉴스</h3>
+        <!-- 3행3열 테이블 구성하기 -->
+        <table>
+          <!-- 1번줄 -->
+          <tr>
+            <!--1-1. 숫자데이터 -->
+            <td>1</td>
+            <!--1-2. 글자링크데이터 -->
+            <td><a href="https://n.news.naver.com/mnews/article/001/0015513898" target="blank">李대통령
+               "제헌절 공휴일 지정 검토…헌법정신 돌아보는 계기로"
+            </a></td>
+            <!--1-3. 이미지데이터 -->
+            <td><a href="https://n.news.naver.com/mnews/article/001/0015513898" target="blank">
+            <img src="./images/photo_news1.jpg" alt="포토뉴스썸네일" />   </a>
+            </td>
+          </tr>
+          <!-- 2번줄 -->
+          <tr>
+            <!--2-1.숫자데이터 -->
+            <td>2</td>
+            <!--2-2. 글자링크데이터 -->
+            <td><a href="https://n.news.naver.com/mnews/ranking/article/277/0005623732?ntype=RANKING" target="blank">"편의점 30곳 돌아도 못 샀다" 
+              난리…'지드래곤 하이볼' 해외서도 통했다</a></td>
+            <!-- 2-3.이미지데이터 -->
+            <td><a href="https://n.news.naver.com/mnews/ranking/article/277/0005623732?ntype=RANKING" target="blank">
+            <img src="./images/photo_news2.jpg" alt="포토뉴스썸네일" />   </a>
+            </td>
+          </tr>
+          <!-- 3번줄 -->
+          <tr>
+            <!--3-1. 숫자데이터 -->
+            <td>3</td>
+            <!--3-2. 글자링크데이터 -->
+            <td><a href="https://n.news.naver.com/mnews/ranking/article/082/0001335883?ntype=RANKING" target="blank">임신 주장하며 손흥민 협박한 남녀 재판 시작… 
+              20대 여성, 일부 혐의 부인</a></td>
+            <!-- 2-3.이미지데이터 -->
+            <td><a href="https://n.news.naver.com/mnews/ranking/article/082/0001335883?ntype=RANKING" target="blank">
+            <img src="./images/photo_news3.jpg" alt="포토뉴스썸네일" /></a>
+            </td>
+          </tr>
+        </table>
+      </article>
+      <!-- [ 젠코딩 (에밋코딩)기본사용법 ]
+ 아이디는 #
+ 클래스는 .
+ 요소는 요소명
+ 자손은 직계(>)로만 표시
+ 묶음형제는 () 사용
+ 형제요소는 +사용
+ 개수만큼 생성시 *숫자
+속성은 대괄호[] 
+
+ (위에서 테이블 만든 예시)
+table>tr*3>td*3>a[target=blank]
+-->
     </main>
 
     <!--*********** 3. 하단영역 ***********-->
