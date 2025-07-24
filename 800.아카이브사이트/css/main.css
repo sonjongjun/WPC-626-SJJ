@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+/*  나의 아카이브 사이트 초기화 CSS - main.css */
+
+/* 외부 CSS 불러오기 */
+
+@import url(./reset.css);
+@import url(./core.css);
+
+/* 전체 배경색 */
+body{
+    background-color: #110327;
+}
