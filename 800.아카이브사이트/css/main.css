@@ -8,6 +8,23 @@
 @import url(./core.css);
 
 /* 전체 배경색 */
-body{
-    background-color: #110327;
+body {
+  background-color: #4682cf;
+}
+/* 1.상단영역 */
+/* 겉박스 */
+#top-area {
+  background-color: #fff;
+}
+/* 속박스 */
+.top-area .part-box{
+    padding-top: 10px;
+    /* 상단영역 높이값 동일셋팅! */
+  height: 112px;
+}
+/* 로고이미지 */
+.logo {
+  width: 100%;
+  aspect-ratio: 220/80;
+  
 }
