@@ -11,7 +11,7 @@
 body {
   background-color: #000000;
 }
-/* 1.상단영역 */
+/*****************************************1.상단영역 **********************************/
 /* 겉박스 */
 #top-area {
   background-color: #fff;
@@ -55,55 +55,79 @@ body {
 }
 
 /* 깃허브 박스 */
-.git-box{
+.git-box {
   text-align: right;
   font-size: 60px;
   line-height: 100px;
 }
-
-/* 2. 메인영역 */
-.main-area{
-  /* 글자색 흰색변경 */
-  color: #d4dac6
+/* 나의 캐릭터 링크박스 */
+a.my-cha-link {
+  /* a요소는 위아래 마진 적용이 안되므로 인라인블록으로 display변경해야한다 */
+  display: inline-block;
+  margin-top: 22px;
+  /* 인라인요소간 진행방향 세로정렬
+  ->옆에있는 깃허브로고가 영향을 받으므로
+  이 정렬속성으로 세로 위치를 조정한다 */
+  vertical-align: -15px;
 }
-h2{
-  color: #7debc1
+/* 처음에 두번째 이미지 안보이게하기 */
+.my-cha-link img:last-child {
+  display: none;
+}
+/* 마우스 오버시 첫번쨰이미지 안보이게하기 */
+.my-cha-link:hover img:first-child {
+  display: none;
+}
+/*마우스 오버시 두번째 이미지 보이게하기 */
+.my-cha-link:hover img:last-child {
+  display: inline;
+}
+
+/*************************************** 2. 메인영역 *************************************/
+.main-area {
+  /* 글자색 흰색변경 */
+  color: #d4dac6;
+}
+h2 {
+  color: #7debc1;
 }
 
 /* 자기소개 겉박스 */
-#intro-box{
+#intro-box {
   /* 가로폭 끝까지 그라데이션 나오게 겉 박스에 세팅함 */
   background-image: linear-gradient(
-  to bottom, #D1D7FE 0%, #5E4CC4 19%, #000 40%);
+    to bottom,
+    #d1d7fe 0%,
+    #5e4cc4 19%,
+    #000 40%
+  );
 }
 /* 2-1. 자기소개 속박스 */
-.intro-box{
-/* 위아래 패딩 */
-padding: 10px 0;
+.intro-box {
+  /* 위아래 패딩 */
+  padding: 10px 0;
 }
 /* 자기소개글 타이틀 */
-.intro-box .txt-box h2{
+.intro-box .txt-box h2 {
   font-size: 50px;
   font-weight: normal;
   margin-bottom: 60px;
 }
 /* 자기소개글 내용 박스 */
-.intro-box .txt-box p{
-font-size: 20px;
-line-height: 29px;
+.intro-box .txt-box p {
+  font-size: 20px;
+  line-height: 29px;
 }
 /* 자기소개 이미지박스 */
-.img-box{
-height: 510px;
-border-radius: 40px;
-/* 나가는 이미지 숨기기 */
-overflow: hidden;
-
+.img-box {
+  height: 510px;
+  border-radius: 40px;
+  /* 나가는 이미지 숨기기 */
+  overflow: hidden;
 }
-.img-box img{
+.img-box img {
   width: 100%;
   height: 100%;
   /* 이미지를 배경처럼 박스에 비율 맞춰서 빈틈없이 보이게 하기 */
   object-fit: cover;
 }
-
