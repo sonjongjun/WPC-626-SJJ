@@ -9,7 +9,7 @@
 
 /* 전체 배경색 */
 body {
-  background-color: #4682cf;
+  background-color: #000000;
 }
 /* 1.상단영역 */
 /* 겉박스 */
@@ -17,14 +17,93 @@ body {
   background-color: #fff;
 }
 /* 속박스 */
-.top-area .part-box{
-    padding-top: 10px;
-    /* 상단영역 높이값 동일셋팅! */
+.top-area .part-box {
+  /* padding-top: 10px; */
+  /* 상단영역 높이값 동일셋팅! */
   height: 112px;
 }
 /* 로고이미지 */
 .logo {
+  margin-top: 10px;
   width: 100%;
   aspect-ratio: 220/80;
-  
 }
+
+/* GNB메뉴 */
+
+/* float해제 설정 */
+#gnb {
+  max-width: 818px;
+  margin: 0 auto;
+  /* outline: 1px solid red; */
+}
+
+#gnb::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+#gnb li {
+  float: left;
+  /* 높이값만큼 줄간격세팅 */
+  line-height: 112px;
+}
+/* 두번째 li부터 끝까지 왼쪽마진  */
+#gnb li + li {
+  margin-left: 21.2%;
+  /* 마진의 %값의 기준은 부모박스의 크기이다. */
+}
+
+/* 깃허브 박스 */
+.git-box{
+  text-align: right;
+  font-size: 60px;
+  line-height: 100px;
+}
+
+/* 2. 메인영역 */
+.main-area{
+  /* 글자색 흰색변경 */
+  color: #d4dac6
+}
+h2{
+  color: #7debc1
+}
+
+/* 자기소개 겉박스 */
+#intro-box{
+  /* 가로폭 끝까지 그라데이션 나오게 겉 박스에 세팅함 */
+  background-image: linear-gradient(
+  to bottom, #D1D7FE 0%, #5E4CC4 19%, #000 40%);
+}
+/* 2-1. 자기소개 속박스 */
+.intro-box{
+/* 위아래 패딩 */
+padding: 10px 0;
+}
+/* 자기소개글 타이틀 */
+.intro-box .txt-box h2{
+  font-size: 50px;
+  font-weight: normal;
+  margin-bottom: 60px;
+}
+/* 자기소개글 내용 박스 */
+.intro-box .txt-box p{
+font-size: 20px;
+line-height: 29px;
+}
+/* 자기소개 이미지박스 */
+.img-box{
+height: 510px;
+border-radius: 40px;
+/* 나가는 이미지 숨기기 */
+overflow: hidden;
+
+}
+.img-box img{
+  width: 100%;
+  height: 100%;
+  /* 이미지를 배경처럼 박스에 비율 맞춰서 빈틈없이 보이게 하기 */
+  object-fit: cover;
+}
+
