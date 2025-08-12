@@ -75,8 +75,8 @@ box-sizing:border-box 세팅해야함!!*/
         float: left;
         /* 5등분하기 */
         width: calc(100% / 5);
-        /* 중앙정렬 */
-        text-align: center;
+        padding-top: 15%;
+        position: relative;
       }
       /* 캐릭터 이미지 공통*/
       .main-contents > div img {
@@ -84,11 +84,13 @@ box-sizing:border-box 세팅해야함!!*/
         height: 200px;
         /* 원형 */
         border-radius: 50%;
-        /* 외곽선 */
         border: 5px solid rgb(194, 194, 33);
 
         /* 트랜지션 */
         transition: 0.6s;
+        left: 50%;
+        translate: -50%;
+        top: 0;
       }
       /* 5번째 div이후 자식요소 마진탑주기 */
       .main-contents > div:nth-child(5) ~ div {
@@ -109,191 +111,320 @@ box-sizing:border-box 세팅해야함!!*/
   (2) grad: 그라디언트 (400 grad는 한 바퀴 회전)
   (3) rad: 라디안 (2π rad는 한 바퀴 회전)
   (4) turn: 턴 (1 turn은 한 바퀴 회전)*/
+
+      #transform-box1 img {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+      }
       #transform-box1:hover img {
-        /* y축회전 tfry*/
-        transform: rotateY(180deg);
-        /* 동시효과중 필터주기 */
-        filter: grayscale(70%);
-        /******************************* CSS 필터 적용하기****************************
-        : 필터속성은 흑백,흐림,세피아,명암,
-        채도 등 출력이미지를 변경하고자 할때
-        사용하는 속성
-        (참고)
-        https://www.w3schools.com/cssref/playit.php?filename=playcss_filter&preval=blur(5px) */
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+        border: 5px solid rgb(255, 0, 0);
+       
       }
-      /* 2. rotateX(각도deg) - X축회전
-                      - deg 는 각도의 단위(도:degree) */
       #transform-box2 img {
-        /* x축 회전 미리 해놓기! */
-        transform: rotateX(180deg);
-        /* 필터블러 */
-        filter: blur(2px);
+        position: absolute;
+        width: 200px;
+        height: 200px;
       }
-      /* 오버시 원상복귀 */
       #transform-box2:hover img {
-        transform: rotateX(0deg);
-        /* 필터블러없애기 */
-        filter: blur(0px);
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+        border: 5px solid rgb(255, 0, 0);
       }
-      /* ***********************3. translateX(거리) - X축이동*************************
-      - 단위 : px, % 등
-      - 현재 위치로부터 이동
-      - 기준점은 요소의 왼쪽
-      - % 단위를 쓸경우 기준은 요소의 width값
-      - 이동방향: + 오른쪽, -는 왼쪽*/
+      #transform-box3 img {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+      }
       #transform-box3:hover img {
-        /* x축이동 tftx */
-        transform: translateX(-50%);
-        /* ->%단위 기준은 항상 자기자신의 크기*/
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+        border: 5px solid rgb(255, 0, 0);
+      }
+      #transform-box4 img {
+        position: absolute;
+        width: 200px;
+        height: 200px;
       }
       #transform-box4:hover img {
-        /********************************************** 
-    4. translateY(거리tfty) - Y축이동
-    - 단위 : px, % 등
-    - 현재 위치로부터 이동
-    - 기준점은 요소의 윗쪽
-    - % 단위를 쓸경우 기준은 요소의 height값
-    - 이동방향: + 아랫쪽, -는 윗쪽
-      **********************************************/
-        transform: translateY(200%);
-        /* ->%단위 기준은 항상 자기자신의 크기*/
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+        border: 5px solid rgb(255, 0, 0);
+      }
+      #transform-box5 img {
+        position: absolute;
+        width: 200px;
+        height: 200px;
       }
       #transform-box5:hover img {
-        /********************************************** 
-  5. translate(x축거리,y축거리) - X,Y축이동
-  - 단위 : px, % 등
-  - 현재 위치로부터 이동
-  - 기준점은 요소의 윗쪽, 왼쪽선
-  - % 단위를 쓸경우 기준은 요소의 
-      width,height값
-  - 이동방향: + 오른쪽/아랫쪽, -는 왼쪽/윗쪽
-      **********************************************/
-        /* transform: translate(-100%,-100%); */
-        /****************************************************************
-원래는 translate는 transform하위 세팅속성임
-translate의 사용율이 높아짐에 따라 속성값으로 독립됨
-
-[translate속성]
-translate: 값 값; -> x,y축 이동설정값
-translate: 값; -> x축 이동설정값
-translate: 0,값; -> y축 이동설정값
-****************************************************************/
-        /* translate: -100%; ->x축이동 */
-        /* translate: 0 -100%; ->y축이동 */
-        translate: -100% -100%; /* -> x,y축 동시이동(중간에 ,하지말것!) */
-        /* 투명도 조정 - opacity속성*/
-        opacity: 0.5;
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+        border: 5px solid rgb(255, 0, 0);
       }
-      /* 이미지 회전축 변경하기 */
       #transform-box6 img {
-        /************************************** 
-       6. transform: rotate(각도deg) - 원형회전
-       - 각도의 숫자가 양수이면 시계방향
-       음수는 반시계방향
-       - 기본회전축은 정중앙
-       (변경가능: transform-origin)
-   
-       [ 트랜스폼 회전축 변경속성 ]
-       transform-origin: 가로 세로;
-       - 가로값 : left, right, center, 몇 px,몇%
-       - 세로값 : top, bottom, center, 몇 px,몇%
-       - 기본값 : 가로, 세로 center임! 
-       **************************************/
-        /* transform-origin:right; */
-        transform-origin: 20% 20%;
+        position: absolute;
+        width: 200px;
+        height: 200px;
       }
       #transform-box6:hover img {
-        /* 원형회전 ->tfr */
-        rotate: z -7200deg;
-
-        /************************************************* 
-
-[rotate 속성]
-
-rotate : 각도; -> 평면회전
-rotate : x 각도; -> x축회전
-rotate : y 각도; -> y축회전
-rotate : z 각도; -> z축회전
-
-((참고: 축 회전 조합하기))
-rotate : 숫자 숫자 숫자 각도
--> 숫자에 1을쓰면 순서대로 x,y,z축이다. 사용표시
--> 숫자에 0을 쓰면 순서대로 x,y,z축 미사용표시
-
-ex) rotate: 1 1 0 45deg; x,y 축 동시 45도 회전
-ex) rotate: 1 1 1 180deg; x,y,z축 동시 180도 회전
-
-*************************************************/
-
-        /* 트랜지션 시간 늘리기 */
-        transition-duration: 15s;
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+        border: 5px solid rgb(255, 0, 0);
+      }
+      #transform-box7 img {
+        position: absolute;
+        width: 200px;
+        height: 200px;
       }
       #transform-box7:hover img {
-        /*******************************************************************
-7. transform: skew - x,y축 기울임
-- skewX(각도deg), skewY(각도deg)
-- skew(x축,y축)
-- 각도가 양수/음수에 따라 기울임 방향이 달라짐
-*******************************************************************/
-        /* x축 skew */
-        /* transform: skewX(30deg);*/
-        /* y축 skew */
-        transform: skewY(30deg);
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+        border: 5px solid rgb(255, 0, 0);
       }
-
+      #transform-box8 img {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+      }
       #transform-box8:hover img {
-        /******************************************** 
-    8. transform: scale(x축배수, y축배수)
-    - 값을 하나만쓰면 양방향 같은 값 셋팅
-    - 배수가 1보다 크면 확대, 작으면 축소
-    - scaleX(배수), scaleY(배수) - x,y별셋팅
-    - 값이 0이면 사라짐
-    -> 가끔 크기가 정해진 요소를 일정크기로
-    축소, 확대해서 크기를 맞출때도 용이함!
-
-[scale 속성]
-scale: 값; -> 전체확대/축소
-scale: 값 값; -> x,y 따로확대/축소
-scale: 값 1; -> x축 확대/축소
-scale: 1 값; -> y축 확대/축소
-
-
-********************************************/
-        scale: 2;
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+        border: 5px solid rgb(255, 0, 0);
       }
-      /************************************************* 
-
-      9.복합적용하기
-      transform: 속성1 속성2 속성3
-      *************************************************/
+      #transform-box9 img {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+      }
       #transform-box9:hover img {
-        transform: scale(5) translate(-200%, -100%) rotateX(1200deg)
-          skewX(50deg) rotate(5300deg);
-        /* 트랜지션 시간 늘리기 */
-        transition-duration: 15s;
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+        border: 5px solid rgb(255, 0, 0);
+      }
+      #transform-box10 img {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+      }
+      #transform-box10:hover img {
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+        border: 5px solid rgb(255, 0, 0);
+      }
+      #transform-box1 img:first-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      #transform-box1:hover img:first-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+      #transform-box1 img:last-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
       }
 
-      /* 10.자유효과주기 */
-       #transform-box10 img {
-opacity: 0.5;
-        }
-      #transform-box10:hover img {
-        transform: scale(3) rotateY(180deg) rotateX(7200deg);
-        filter: invert(1);
-        transition: 8s ease-in-out;
-        opacity: 1;
+      #transform-box1:hover img:last-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
       }
+
+      /* ************************************************************ */
+      #transform-box2 img:first-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      #transform-box2:hover img:first-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+      #transform-box2 img:last-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+
+      #transform-box2:hover img:last-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      /* ************************************************************/
+      #transform-box3 img:first-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      #transform-box3:hover img:first-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+      #transform-box3 img:last-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+
+      #transform-box3:hover img:last-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      /* ************************************************************/
+      #transform-box4 img:first-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      #transform-box4:hover img:first-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+      #transform-box4 img:last-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+
+      #transform-box4:hover img:last-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      /* ************************************************************/
+      #transform-box5 img:first-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      #transform-box5:hover img:first-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+      #transform-box5 img:last-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+
+      #transform-box5:hover img:last-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      /* ************************************************************/
+      #transform-box6 img:first-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      #transform-box6:hover img:first-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+      #transform-box6 img:last-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+
+      #transform-box6:hover img:last-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      /* ************************************************************/
+      #transform-box7 img:first-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      #transform-box7:hover img:first-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+      #transform-box7 img:last-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+
+      #transform-box7:hover img:last-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      /* ************************************************************/
+      #transform-box8 img:first-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      #transform-box8:hover img:first-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+      #transform-box8 img:last-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+
+      #transform-box8:hover img:last-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      /* ************************************************************/
+      #transform-box9 img:first-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      #transform-box9:hover img:first-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+      #transform-box9 img:last-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+
+      #transform-box9:hover img:last-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      /* ************************************************************/
+      #transform-box10 img:first-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      #transform-box10:hover img:first-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+      #transform-box10 img:last-child {
+        transform: rotateY(0deg);
+        transition: 0.4s 0.4s ease-out;
+      }
+
+      #transform-box10:hover img:last-child {
+        transform: rotateY(90deg);
+        transition: 0.4s ease-in;
+      }
+      /* ************************************************************/
 
       /* 인트로 등장 애니메이션 설정하기 */
       /* animate를 배우기 전이므로 :hoverfmf 사용! */
-      .main-contents{
-/* 오른쪽 바깥에 나가있게 세팅함 translate사용! */
-translate: 0 -150%;
-/* 트랜지션 */
-transition: .8s ease-in-out .5s;
+      .main-contents {
+        /* 오른쪽 바깥에 나가있게 세팅함 translate사용! */
+        translate: 0 -150%;
+        /* 트랜지션 */
+        transition: 1s ease-in-out 0.5s;
       }
       /* 오버시 등장 */
-      body:hover .main-contents{
+      body:hover .main-contents {
         translate: 0;
       }
     </style>
@@ -306,34 +437,45 @@ transition: .8s ease-in-out .5s;
       <!-- [] <-대괄호는 속성선택자
          ex) #transform-box$*10>img[src=images/cast0$.jpg alt=캐릭터]-->
       <div id="transform-box1">
-        <img src="../images2/라면1.jpg" alt="캐릭터" />
+        <img src="../images2/라면1.jpg" alt="끓인라면" />
+        <img src="../images2/새 폴더/불닭.jpg" alt="봉지라면1" />
+        <span>불닭볶음면</span>
       </div>
       <div id="transform-box2">
-        <img src="../images2/라면2.jpg" alt="캐릭터" />
+        <img src="../images2/라면2.jpg" alt="끓인라면" />
+        <img src="../images2/새 폴더/진라면.jpg" alt="봉지라면2" />
       </div>
       <div id="transform-box3">
-        <img src="../images2/라면3.jpg" alt="캐릭터" />
+        <img src="../images2/라면3.jpg" alt="끓인라면" />
+        <img src="../images2/새 폴더/열라면.jpg" alt="봉지라면3" />
       </div>
       <div id="transform-box4">
-        <img src="../images2/라면4.jpg" alt="캐릭터" />
+        <img src="../images2/라면4.jpg" alt="끓인라면" />
+        <img src="../images2/새 폴더/신라면.jpg" alt="봉지라면4" />
       </div>
       <div id="transform-box5">
-        <img src="../images2/라면5.jpg" alt="캐릭터" />
+        <img src="../images2/라면5.jpg" alt="끓인라면" />
+        <img src="../images2/새 폴더/짜파게티.jpg" alt="봉지라면5" />
       </div>
       <div id="transform-box6">
-        <img src="../images2/라면6.jpg" alt="캐릭터" />
+        <img src="../images2/라면6.jpg" alt="끓인라면" />
+        <img src="../images2/새 폴더/맛있는라면.jpg" alt="봉지라면6" />
       </div>
       <div id="transform-box7">
-        <img src="../images2/라면7.jpg" alt="캐릭터" />
+        <img src="../images2/라면7.jpg" alt="끓인라면" />
+        <img src="../images2/새 폴더/너구리.jpg" alt="봉지라면7" />
       </div>
       <div id="transform-box8">
-        <img src="../images2/라면8.jpg" alt="캐릭터" />
+        <img src="../images2/라면8.jpg" alt="끓인라면" />
+        <img src="../images2/새 폴더/무파마.jpg" alt="봉지라면8" />
       </div>
       <div id="transform-box9">
-        <img src="../images2/라면9.jpg" alt="캐릭터" />
+        <img src="../images2/라면9.jpg" alt="끓인라면" />
+        <img src="../images2/새 폴더/튀김우동.jpg" alt="봉지라면9" />
       </div>
       <div id="transform-box10">
-        <img src="../images2/라면10.jpg" alt="캐릭터" />
+        <img src="../images2/라면10.jpg" alt="끓인라면" />
+        <img src="../images2/새 폴더/오징어짬뽕.jpg" alt="봉지라면10" />
       </div>
     </section>
   </body>
