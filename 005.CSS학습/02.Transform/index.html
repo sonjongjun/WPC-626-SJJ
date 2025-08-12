@@ -268,9 +268,9 @@ scale: 1 값; -> y축 확대/축소
       }
 
       /* 10.자유효과주기 */
-       #transform-box10 img {
-opacity: 0.5;
-        }
+      #transform-box10 img {
+        opacity: 0.5;
+      }
       #transform-box10:hover img {
         transform: scale(3) rotateY(180deg) rotateX(7200deg);
         filter: invert(1);
@@ -280,22 +280,73 @@ opacity: 0.5;
 
       /* 인트로 등장 애니메이션 설정하기 */
       /* animate를 배우기 전이므로 :hoverfmf 사용! */
-      .main-contents{
-/* 오른쪽 바깥에 나가있게 세팅함 translate사용! */
-translate: 110%;
-/* 트랜지션 */
-transition: .8s ease-in-out 1s;
+      .main-contents {
+        /* 오른쪽 바깥에 나가있게 세팅함 translate사용! */
+        translate: 110%;
+        /* 트랜지션 */
+        transition: 0.8s ease-in-out 1s;
       }
       /* 오버시 등장 */
-      body:hover .main-contents{
+      body:hover .main-contents {
         translate: 0;
+      }
+      /* 뒤집히는 애니박스 */
+      #transform-special {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        /* 부모는 보이는화면 */
+      }
+      /* 이미지가 겹치게 앱솔루트 세팅 */
+      #transform-special img {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        /* 원형으로 만들기 */
+        border-radius: 50%;
+      }
+      /*1. 첫번째 img자식 - 유정원본(돌아올때)*/
+      #transform-special img:first-child {
+        /* 처음에 돌려놓음(숨김) */
+        transform: rotateY(90deg);
+        /* 트랜지션 바로출발, 처음만 천천히*/
+        transition: .4s ease-in
+      }
+      /*2. 첫번째 img자식 - 유정오버시 */
+      #transform-special:hover img:first-child {
+        /* 처음에 돌려놓음(숨김) */
+        transform: rotateY(0deg);
+        /* 트랜지션 보검 기다리기 / 그대로 받아서 끝에 천천히*/
+        transition: .4s .4s ease-out
+      }
+      /*3. 마지막 img자식 - 보검원본(처음에보임)*/
+      #transform-special img:last-child {
+        transform: rotateY(0deg);
+        /* 트랜지션 돌아올때 유정 기다리기
+        그대로 받아서 끝에 천천히*/
+        transition: .4s .4s ease-out
+      }
+      /*4
+    . 마지막 img자식 - 보검오버시(숨겨짐)*/
+      #transform-special:hover img:last-child {
+        /* 오버시 90도로 숨겨짐 */
+        transform: rotateY(90deg);
+        /* 트랜지션 */
+        transition: .4s ease-in
       }
     </style>
   </head>
   <body>
     <!-- 1. 제목 -->
     <h1 class="main-title">트랜스폼 연습</h1>
-    <!-- 2. 컨텐츠 박스 -->
+
+    <!-- 2. 뒤집히는 애니박스 -->
+    <div id="transform-special">
+      <img src="images/cast02.jpg" alt="캐릭터" />
+      <img src="images/cast03.jpg" alt="캐릭터" />
+    </div>
+
+    <!-- 3. 컨텐츠 박스 -->
     <section class="main-contents">
       <!-- [] <-대괄호는 속성선택자
          ex) #transform-box$*10>img[src=images/cast0$.jpg alt=캐릭터]-->

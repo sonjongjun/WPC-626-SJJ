@@ -1,11 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 탭메뉴 아이콘넣기 -->
+    <link
+      rel="shortcut icon"
+      href="https://image.istarbucks.co.kr/common/img/common/favicon.ico?v=200828"
+      type="image/ico"
+    />
+    <title>뒤집어 애니 스벅스</title>
+    <style>
+      body {
+        background: black url(./starbucks_img/reserve_bg.jpg) no-repeat fixed
+          center / 100%;
+      }
+       /* 뒤집히는 애니박스 */
+      #transform-special {
+        position: absolute;
+        /* 정중앙 이동하기 
+        1. top, left값을 50%주기
+        2. translate값음 -50% x,y주기
+        -> 원리는 4사분면으로 보낸 후 크기절반 이동*/
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        /* 자식이미지가 앱솔루트 이므로
+        크기를 별도로 줘야한다 */
+        width: 334px;
+        height: 334px;
+        /* 부모는 보이는화면 */
+      }
+      /* 이미지가 겹치게 앱솔루트 세팅 */
+      #transform-special img {
+        position: absolute;
+        width: 334px;
+        height: 334px;
+        /* 원형으로 만들기 */
+      }
+      /*1. 첫번째 img자식 - 유정원본(돌아올때)*/
+      #transform-special img:first-child {
+        /* 처음에 돌려놓음(숨김) */
+        transform: rotateY(90deg);
+        /* 트랜지션 바로출발, 처음만 천천히*/
+        transition: .4s ease-in
+      }
+      /*2. 첫번째 img자식 - 유정오버시 */
+      #transform-special:hover img:first-child {
+        /* 처음에 돌려놓음(숨김) */
+        transform: rotateY(0deg);
+        /* 트랜지션 보검 기다리기 / 그대로 받아서 끝에 천천히*/
+        transition: .4s .4s ease-out
+      }
+      /*3. 마지막 img자식 - 보검원본(처음에보임)*/
+      #transform-special img:last-child {
+        transform: rotateY(0deg);
+        /* 트랜지션 돌아올때 유정 기다리기
+        그대로 받아서 끝에 천천히*/
+        transition: .4s .4s ease-out
+      }
+      /*4
+    . 마지막 img자식 - 보검오버시(숨겨짐)*/
+      #transform-special:hover img:last-child {
+        /* 오버시 90도로 숨겨짐 */
+        transform: rotateY(90deg);
+        /* 트랜지션 */
+        transition: .4s ease-in
+      }
+    </style>
+  </head>
+  <body>
+    <div id="transform-special">
+      <img src="./starbucks_img/reserve_medal02.png" alt="스벅리저브" />
+      <img src="./starbucks_img/reserve_medal01.png" alt="스벅리저브" />
+    </div>
+  </body>
 </html>

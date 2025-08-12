@@ -21,11 +21,16 @@
         height: 500px;
         background: url(./images/capma.png) no-repeat center/cover;
       }
-      /* 두번째 앱솔루트 박스 */
+      /* 두번째 앱솔루트 박스 
+      -> 위치값을 주면 부모를 찾음
+      -> 싸고있는 모든 요소가 부모자격이 없으면
+      스크롤 상단 보이는 화면이 부모가 된다*/
       #a2 {
         position: absolute;
         width: 650px;
         background: url(./images/superman.png) no-repeat center/cover;
+        right: 0;
+        bottom: 0;
       }
       /******************************** 
           [ 3. absolute 포지션 ]
@@ -119,6 +124,7 @@
         box-shadow: 8px 8px 8px #c97598;
         font-size: 45px;
       }
+
       /* 부모를 찾는 앱솔루트! */
       .bx2 {
         border: 2px dotted orangered;
@@ -150,8 +156,7 @@
         width: 100px;
         height: 50px;
         color: #fff;
-        background: url(./images/car.png)
-          no-repeat center/contain;
+        background: url(./images/car.png) no-repeat center/contain;
       }
 
       /* .a4는 위치이동값을 사용하자! -> 부모찾아 삼만리! */
@@ -167,36 +172,96 @@
         height: 40%;
 
         /* 보더적용 */
-        border: 10px dotted  rgb(60, 0, 255);
+        border: 10px dotted rgb(60, 0, 255);
       }
 
-      /* 앱솔루트 : 판타롱스타킹! */
+      /* span 을 앱솔루트로 만들경우 
+-> 앱솔루트 박스에 width, height를 주지 않아도
+내용물 만큼 자동으로 크기가 생성된다.*/
+      .spabs {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        /* 부모는? s8 */
+
+        /*아웃라인  */
+        outline: 4px dotted red;
+      }
+      /*<!-- 앱솔루트 판타롱스타킹 -->*/
       .a5 {
         position: absolute;
-        /* 박스크기를 주지 않은 앱솔루트는
-            그 크기가 내용만큼 자동으로 설정됨! */
-        top: 20%;
-        right: 10%;
-        /* 나의 부모는? 보이는 화면 */
-
-        outline: 2px solid red;
-        /* 보더와 비슷하나 박스구성요소가 아니고
-            주변에 영향을 주지 않는 외곽선만 보여주는 속성
-            사용법은 border와 유사함 */
+        right: 20%;
+        top: 10%;
+        outline: 10px ridge goldenrod;
+        /* 부모는? 보이는 화면 */
+      }
+      /* 이미지가 박스에 단독으로 들어갈 경우
+하단에 생기는 공백 채우기 */
+      .a5 img {
+        vertical-align: bottom;
+        /* 인라인요소가 세로정렬 속성인 vertical-align의
+  값을 top/middlle/bottom중 어떤값을 사용해도
+  하단공백을 없애는 효과가 있다.
+  (단, baseline값 효과없음.)  */
+      }
+      /* 앱솔루트끼리는 서로 겹친다 */
+      .absolute-images {
+        height: 400px;
+        width: 300px;
+        border: 20px ridge #b77d40;
       }
 
-      /*블록박스 내에 단독 이미지 하단공백 4px은 무엇인가? */
-      .a5 img {
-        vertical-align: top;
-        /* 
-                박스에 단일한 이미지를 넣은 경우
-                하단에 자연스런 간극이 존재한다!
-                이것을 없애려면 vertical-align
-                인라인요소간 세로정렬 속성의 값으로
-                top/bottom/middle 중 하나로 셋팅하면
-                하단 간극이 사라진다!
-                (baseline값은 적용안됨!)
-            */
+      .absolute-images img {
+        /* 앱솔루트 포지션 */
+        position: absolute;
+        /* 젠틀 앱솔루트 */
+        height: 400px;
+        width: 300px;
+      }
+      /* 두번째 이미지 투명하게 세팅 */
+      .absolute-images img:last-child {
+        opacity: 0;
+        /* 트랜지션 */
+        transition: 0.3s;
+      }
+      /* 싸고있는 박스에 마우스 오버시 투명도1 */
+      .absolute-images:hover img:last-child {
+        opacity: 1;
+      }
+
+      .car-box {
+        position: absolute;
+        /* 맨 위, 왼쪽위치 */
+        top: 0;
+        left: 0;
+        /* 부모=보이는화면 */
+        /* 가로크기 - 부모의 20%  */
+        width: 20%;
+        /* 보더 */
+        border: 4px dotted #bfe02d;
+        border-radius: 20px;
+        /* 이미지는 한 쪽 크기만 주면
+        나머지 방향크기는 자동 비율유지함 */
+      }
+      /* 자동차이미지 */
+      .car-box img {
+        width: 100%;
+      }
+/* 자동차 앱솔루트 타이틀박스 */
+      .car-box h3{
+position: absolute;
+/* 위치값으로 부모 가로크기를 채우게함
+동적크기 생성 */
+left: 0;
+right: 0;
+/* 글자 중앙정렬 */
+text-align: center;
+border-radius: 20px;
+bottom: 0;
+border: 2px solid #ff0000;
+background-color: #d17070b7;
+/* 기본마진없애기 */
+margin: 0;
       }
     </style>
   </head>
@@ -216,8 +281,27 @@
     <!-- 두번째 앱솔루트 박스 -->
     <div class="bx" id="a2">a2</div>
 
+    <!-- 앱솔루트 판타롱스타킹 -->
+    <div class="a5" title="앱솔루트 판타롱스타킹">
+      <img src="./images/ab0.jpg" alt="포스터" />
+    </div>
+
+    <!-- 앱솔루트끼리는 서로 겹친다 -->
+    <div class="absolute-images">
+      <img src="./images/ab3.jpg" alt="토르" />
+      <img src="./images/ab4.jpg" alt="닥스" />
+    </div>
+    <!-- 앱솔루트 위치값으로 크기 만들기 -->
+    <div class="car-box">
+      <img src="./images/car.png" alt="자동차" />
+      <!-- 위치값으로 크기 만들 타이틀박스 -->
+       <h3>
+        🚩레드 스포츠카🚗
+       </h3>
+    </div>
+
     <!-- 부모를 찾는 앱솔루트! -->
-<div class="bx2 s5">
+    <div class="bx2 s5">
       s5
       <div class="bx2 s6">
         s6
@@ -226,24 +310,11 @@
           <div class="bx2 s8">
             s8
             <!-- 박스내부 앱솔루트 -->
-            <div
-              class="abs a3"
-              title="나는 젠틀앱솔루트다!"
-            >
-              a3
-            </div>
+            <div class="abs a3" title="나는 젠틀앱솔루트다!">a3</div>
 
-            <div
-              class="abs a4"
-              title="나는 부모찾아 올라간다!"
-            >
-              a4
-            </div>
+            <div class="abs a4" title="나는 부모찾아 올라간다!">a4</div>
 
-            <span
-              class="spabs"
-              title="자동블록전환!"
-            >
+            <span class="spabs" title="자동블록전환!">
               나는 span앱솔루트다!
             </span>
           </div>

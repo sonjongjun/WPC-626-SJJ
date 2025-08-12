@@ -12,7 +12,7 @@
         /* background: 색이반고윙/크 */
         /* background: 색 이미지 반복 고정 위치/크기 */
         /* 1. 이미지 */
-        background-image: url(./images/bg-main.jpg);
+        background-image: url(../images2/배경3.jpeg);
         /* 2. 반복여부 */
         background-repeat: no-repeat;
         /* 3. 고정: 배경이미지 화면고정 */
@@ -20,7 +20,7 @@
         /* 4.위치 : 가로(x)축 세로(y)축 
             가로값 - left(기본값), right center, 수치값
             세로값 - top, bottom, center(기본값), 수치값*/
-        background-position: center top;
+        background-position: center;
         /* 5. 크기 : 가로(width), 세로(height)
             특이한 값들
             1) contain-> 배경이미지가 모두보임(비율맞게)
@@ -31,23 +31,27 @@
       /* 1. 제목 */
       .main-title {
         /* 박스세팅 */
-        background-color: #00000094;
+        background-color: #dd232394;
         border-radius: 50px;
         text-align: center;
+        /* display: inline-block;
+        margin-left: 40%; */
         /* 글자세팅 */
-        color: rgb(167, 225, 179);
+        color: rgb(208, 25, 25);
         font-size: 50px;
         line-height: 100px;
+        border: 5px solid #e6ff00;
         /* 글자 테두리 */
         /* -webkit-text-stroke: 1px green ; */
-        text-shadow: 2px 0 green, -2px 0 green, 0 2px green, 0 -2px green;
+        text-shadow: 2px 0 yellow, -2px 0 yellow, 0 2px yellow, 0 -2px yellow;
+        /* position: absolute; */
       }
       /* 전체 부모박스 */
       .main-contents {
         /* 박스세팅 */
         max-width: 1500px;
         margin: 100px auto;
-        border: 10px solid #5dc269;
+        border: 10px solid #cf0e0e;
         border-radius: 20px;
         padding: 20px;
         /* 기본적으로 박스 크기를 잡으면 그 크기는 컨텐트 영역의 크기임
@@ -80,6 +84,8 @@ box-sizing:border-box 세팅해야함!!*/
         height: 200px;
         /* 원형 */
         border-radius: 50%;
+        /* 외곽선 */
+        border: 5px solid rgb(194, 194, 33);
 
         /* 트랜지션 */
         transition: 0.6s;
@@ -282,9 +288,9 @@ opacity: 0.5;
       /* animate를 배우기 전이므로 :hoverfmf 사용! */
       .main-contents{
 /* 오른쪽 바깥에 나가있게 세팅함 translate사용! */
-translate: 110%;
+translate: 0 -150%;
 /* 트랜지션 */
-transition: .8s ease-in-out 1s;
+transition: .8s ease-in-out .5s;
       }
       /* 오버시 등장 */
       body:hover .main-contents{
@@ -294,40 +300,40 @@ transition: .8s ease-in-out 1s;
   </head>
   <body>
     <!-- 1. 제목 -->
-    <h1 class="main-title">트랜스폼 연습</h1>
+    <h1 class="main-title">🍜나의 라면사이트🍜</h1>
     <!-- 2. 컨텐츠 박스 -->
     <section class="main-contents">
       <!-- [] <-대괄호는 속성선택자
          ex) #transform-box$*10>img[src=images/cast0$.jpg alt=캐릭터]-->
       <div id="transform-box1">
-        <img src="images/cast01.jpg" alt="캐릭터" />
+        <img src="../images2/라면1.jpg" alt="캐릭터" />
       </div>
       <div id="transform-box2">
-        <img src="images/cast02.jpg" alt="캐릭터" />
+        <img src="../images2/라면2.jpg" alt="캐릭터" />
       </div>
       <div id="transform-box3">
-        <img src="images/cast03.jpg" alt="캐릭터" />
+        <img src="../images2/라면3.jpg" alt="캐릭터" />
       </div>
       <div id="transform-box4">
-        <img src="images/cast04.jpg" alt="캐릭터" />
+        <img src="../images2/라면4.jpg" alt="캐릭터" />
       </div>
       <div id="transform-box5">
-        <img src="images/cast05.jpg" alt="캐릭터" />
+        <img src="../images2/라면5.jpg" alt="캐릭터" />
       </div>
       <div id="transform-box6">
-        <img src="images/cast01.jpg" alt="캐릭터" />
+        <img src="../images2/라면6.jpg" alt="캐릭터" />
       </div>
       <div id="transform-box7">
-        <img src="images/cast02.jpg" alt="캐릭터" />
+        <img src="../images2/라면7.jpg" alt="캐릭터" />
       </div>
       <div id="transform-box8">
-        <img src="images/cast03.jpg" alt="캐릭터" />
+        <img src="../images2/라면8.jpg" alt="캐릭터" />
       </div>
       <div id="transform-box9">
-        <img src="images/cast04.jpg" alt="캐릭터" />
+        <img src="../images2/라면9.jpg" alt="캐릭터" />
       </div>
       <div id="transform-box10">
-        <img src="images/cast05.jpg" alt="캐릭터" />
+        <img src="../images2/라면10.jpg" alt="캐릭터" />
       </div>
     </section>
   </body>
