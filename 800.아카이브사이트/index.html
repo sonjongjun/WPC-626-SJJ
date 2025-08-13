@@ -4,13 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>나의 아카이브 사이트</title>
-    <!-- 폰트어썸 CSS -->
+    <!-- 폰트어썸 CSS : 아이콘을 위한 CSS CDN -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     />
     <!-- 메인 CSS -->
     <link rel="stylesheet" href="./css/main.css" />
+    <!-- 
+    참고: 경로잡기
+    1. 절대경로 -> 웹 서버의 URL로 되어있는 경로
+    2. 상대경로 -> 현재 웹페이지의 상대위치를 찾는 경로
+    -> ./ 현재위치(아무것도 안써도 현재위치)
+    -> ../ 한 폴더 위로 경로이동
+    3. 절대/상대경로 : 프로젝트 최상위 폴더 기준 경로
+    -> / 맨앞에 슬래쉬만 있고 이 표시가 최상위 root폴더를 의미함 -->
   </head>
   <body>
     <!-- 1.상단영역 -->
@@ -41,12 +49,13 @@
         <!-- 깃허브 파티션 -->
         <div class="part-box col-2 git-box">
           <!-- 마이캐릭터 이미지 -->
-           <a class="my-cha-link" href="#" title="나의 프로젝트 사이트 바로가기">
-             <img src="./images/frog (2).png" alt="내 로고">
-             <img src="./images/frog.png" alt="내 하트로고">
-            </a>
-             <!-- 깃허브 로고 링크 -->
-          <a title="나의 깃허브 사이트 바로가기"
+          <a class="my-cha-link" href="#" title="나의 프로젝트 사이트 바로가기">
+            <img src="./images/frog (2).png" alt="내 로고" />
+            <img src="./images/frog.png" alt="내 하트로고" />
+          </a>
+          <!-- 깃허브 로고 링크 -->
+          <a
+            title="나의 깃허브 사이트 바로가기"
             class="fa-brands fa-github"
             href="https://github.com/sonjongjun"
             target="_blank"
@@ -85,6 +94,38 @@
                 <img src="./images/worksbg.jpg" alt="내 이미지" />
               </div>
             </div>
+          </div>
+        </section>
+        <!-- 2-2. 트레이닝 프로젝트 파트 -->
+        <section id="training-pj-part" class="pj-box">
+          <div class="training-pj-part inbox">
+            <!-- 2-2-1. 제목박스 -->
+            <h2 class="sub-part-title">트레이닝 프로젝트 파트</h2>
+            <!-- 2-2-2.링크박스
+             clb 클래스를 넣어서 float설정을 위한
+             clear 셋팅 가상요소가 적용된다 -->
+            <article class="link-box clb">
+              <!-- 왼쪽박스 -->
+              <div class="left-part">
+                <ul class="link-list">
+                  <li><a href="" target="_blank">왼쪽링크바로가기</a></li>
+                  <li><a href="" target="_blank">왼쪽링크바로가기</a></li>
+                  <li><a href="" target="_blank">왼쪽링크바로가기</a></li>
+                  <li><a href="" target="_blank">왼쪽링크바로가기</a></li>
+                  <li><a href="" target="_blank">왼쪽링크바로가기</a></li>
+                </ul>
+              </div>
+              <!-- 오른쪽박스 -->
+              <div class="right-part">
+                <ul class="link-list">
+                  <li><a href="" target="_blank">오른쪽링크바로가기</a></li>
+                  <li><a href="" target="_blank">오른쪽링크바로가기</a></li>
+                  <li><a href="" target="_blank">오른쪽링크바로가기</a></li>
+                  <li><a href="" target="_blank">오른쪽링크바로가기</a></li>
+                  <li><a href="" target="_blank">오른쪽링크바로가기</a></li>
+                </ul>
+              </div>
+            </article>
           </div>
         </section>
       </main>
