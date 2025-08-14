@@ -37,7 +37,6 @@ body {
   margin: 0 auto;
   /* outline: 1px solid red; */
 }
-
 #gnb::after {
   content: "";
   display: block;
@@ -47,13 +46,13 @@ body {
   float: left;
   /* 높이값만큼 줄간격세팅 */
   line-height: 112px;
+
 }
 /* 두번째 li부터 끝까지 왼쪽마진  */
 #gnb li + li {
   margin-left: 21.2%;
   /* 마진의 %값의 기준은 부모박스의 크기이다. */
 }
-
 /* 깃허브 박스 */
 .git-box {
   text-align: right;
