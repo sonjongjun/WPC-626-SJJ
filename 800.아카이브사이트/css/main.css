@@ -150,6 +150,8 @@ h2 {
   text-align: center;
   /* 글자설정 */
   font-size: 36px;
+  color: rgba(146, 126, 193, 0.8);
+  
 }
 /* 구분선은 타이틀박스의 가상요소로 구현함*/
 .sub-part-title::before{
@@ -184,7 +186,7 @@ rgba형식에서 a는 알파값으로 투명도이며 0.8이면
 예전형식: rgba(숫자,숫자,숫자,알파값)
 새로운형식: (숫자 숫자 숫자 / 알파값)*/
 /* background-color: rgba(255, 255, 255, 0.8); */
-background-color: rgba(255 255 255 / 0.8);
+background-color: rgba(146, 126, 193, 0.8);
 }
 /* 플로팅 설정하기 */
 .link-box>div{
@@ -205,7 +207,10 @@ background-color: rgba(255 255 255 / 0.8);
 /* 플로팅 해제 clear는 core.css의
 clb클래스로 처리함 */
 
-
+h3.part-title{
+  color: #fff;
+  font-size: 35px;
+}
 
 /* 왼쪽박스 */
 .left-part{
@@ -222,7 +227,7 @@ right: 0;
 /* 부모는-> .left-part */
 width: 1px;
 height: 70%;
-background-color:gray
+background-color:rgb(36, 36, 36)
 }
 /* 링크박스 a요소 */
 .link-box a{
@@ -245,7 +250,7 @@ background-color:gray
   margin-left: 100%;
   /* 마진값의 퍼센트는 부모박스(a요소)의 가로크기이다. */
   height: 30px;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px dashed #000;
   /* background-color: red; */
   /* 트랜지션 trs */
   transition: 1.5s linear;
