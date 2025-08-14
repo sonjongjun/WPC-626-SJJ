@@ -2,7 +2,7 @@
 
 https://www.pizzahut.co.kr/<<<<소스를 따서
 
-1.https://crafto.themezaa.com/pizza-parlor/ 아웃백<<<< 여기 형식으로 할 것
+1.https://crafto.themezaa.com/pizza-parlor/ <<<< 여기 형식으로 할 것
 
 2.https://pizzastorm.co.kr/main.html <<<<<<<<소스 피자스톰
 
