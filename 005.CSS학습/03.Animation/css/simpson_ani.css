@@ -129,3 +129,23 @@ rotate: y 각도deg; */
     left: -58px;
 }
 }
+
+/* 5.메기심슨 나오기 호출설정 */
+.maggie{
+  /* 메기 등장 */
+  animation: maggie-ani 1s ease-out 6s forwards,
+  /* 업다운애니 */
+  maggie-updown-ani .5s ease-in-out 7s infinite alternate;
+}
+/* 메기 애니 키프레임 */
+@keyframes maggie-ani {
+  to{
+    bottom: -24px;
+    left: 128px;
+     width: 125px;}
+    }
+@keyframes maggie-updown-ani {
+  to{
+    translate: 0 5%;
+  }
+}    

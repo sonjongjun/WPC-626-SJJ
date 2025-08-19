@@ -12,6 +12,7 @@ h1 {
   display: inline-block;
   margin-left: 40%;
   font-size: 36px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* 전체박스 */
@@ -76,7 +77,6 @@ h1 {
   top: 21px;
   left: -360px;
   width: 200px;
- /* translate: 50%; */
  rotate: 90deg;
 }
 
@@ -84,7 +84,7 @@ h1 {
 .maggie{
     position: absolute;
      bottom: -165px;
-     left: 315px;
+      left: 128px;
      width: 125px;
 
 }
