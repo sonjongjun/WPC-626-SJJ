@@ -5,7 +5,7 @@
 
 .tit {
   position: absolute;
-    bottom: 10%;
+    bottom: 0%;
     left: 50%;
     translate: -50%;
     font-family: 'Black And White Picture', sans-serif;
@@ -24,23 +24,14 @@ body{
   background: #000 url(../images/oldTVON.png) no-repeat center/auto 100%;
   padding-top: 93px;
 }
-/*  */
-#tv{
-  position: absolute;
-    top: 54px;
-    left: 54%;
-    translate: -50%;
-    width: 1047px;
-}
-
 
 /* 전체박스 */
 .house{
     position: absolute;
     /* 부모자격 - 하위 앱솔루트 요소들 */
-    top: 101px;
-    left: 49%;
-    translate: -50%;
+    top: 50%;
+    left: 46%;
+    translate: -50% -50%;
     width: 800px;
     height: 441px;
     /* margin: 0 auto; */
@@ -194,8 +185,8 @@ font:스두크/줄체 -> 크체 필수 */
 /* 7. tv */
 #tv{
   position: absolute;
-    top: 54px;
-    left: 54%;
+    top: 23%;
+    left: 50%;
     translate: -50%;
     width: 1047px;
 }
