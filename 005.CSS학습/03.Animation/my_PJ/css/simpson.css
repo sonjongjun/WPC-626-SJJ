@@ -55,7 +55,7 @@ body{
 /* .maggie ~ * {
   display: none;
 } */
-/* 1. 심슨 */
+/* 1. 토성 */
 .saturn {
   position: absolute;
   top: 298px;
@@ -134,7 +134,7 @@ font:스두크/줄체 -> 크체 필수 */
   border-left: 20px solid transparent;
 }
 
-/* 3.마지심슨 */
+/* 3. 달 */
 .moon {
   position: absolute;
   bottom: 32px;
@@ -144,7 +144,7 @@ font:스두크/줄체 -> 크체 필수 */
   width: 424px;
 }
 
-/* 4. 리사심슨 */
+/* 4. 해 */
 .sun {
   position: absolute;
   top: 21px;
@@ -153,14 +153,14 @@ font:스두크/줄체 -> 크체 필수 */
   rotate: 90deg;
 }
 
-/* 5.메기심슨 */
+/* 5.슈퍼맨 */
 .s-man {
   position: absolute;
   bottom: -165px;
   left: 128px;
   width: 125px;
 }
-/* 6.바트심슨 */
+/* 6.명왕성 */
 .pluto {
   position: absolute;
   top:  -310px;
