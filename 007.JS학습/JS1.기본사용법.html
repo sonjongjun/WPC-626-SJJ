@@ -59,17 +59,29 @@
         box-sizing: border-box;
       }
       /* 원모양 개별셋팅 */
-      .원이야:nth-child(1){
+      .원이야:nth-child(1) {
         right: 400px;
         background-image: url(./images/apt1.jpg);
       }
-      .원이야:nth-child(2){
+      .원이야:nth-child(2) {
         right: 200px;
         background-image: url(./images/apt2.jpg);
       }
-      .원이야:nth-child(3){
+      .원이야:nth-child(3) {
         background-position: center;
         background-image: url(./images/apt3.jpg);
+      }
+      /* 원이야 클래스에 돌아 클래스를 넣으면 돌게한다 */
+      .원이야.돌아 {
+        /* 애니메이션 - animation: 이시이지반방마 */
+        animation: 돌아애니 2s linear infinite;
+      }
+
+      @keyframes 돌아애니 {
+        to {
+          rotate: 1turn;
+          /* rotate: 306deg; */
+        }
       }
     </style>
     <!-- 자바스크립트 코딩구역 -->
@@ -161,6 +173,9 @@
       } ///////김비서 나와라 함수///////////
       /////////////////////용//////////////////
     </script>
+    <!-- 외부 JS파일 불러오기 : 익스터널 방식 JS
+     외부JS파일의 확장자는 .js다 -->
+     <script src="./js/JS1.기본사용법.js"></script>
   </head>
   <body>
     <!-- 드라마 소개박스 -->
@@ -228,9 +243,9 @@
 
     <!-- 원모양박스 -->
     <div class="박스야">
-      <div class="원이야"></div>
-      <div class="원이야"></div>
-      <div class="원이야"></div>
+      <div class="원이야" onclick="돌아랏(0)"></div>
+      <div class="원이야" onclick="돌아랏(1)"></div>
+      <div class="원이야" onclick="돌아랏(2)"></div>
     </div>
   </body>
 </html>
