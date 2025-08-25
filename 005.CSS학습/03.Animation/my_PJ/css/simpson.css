@@ -37,7 +37,7 @@ body{
     /* margin: 0 auto; */
 
     /* 배경이미지 */
-    background: url(../images/house.png) no-repeat;
+    background: url(../images/space.jpg) no-repeat;
 
     /* 문짝(.door)을 원근 입체로 보이게 하기위해
     부모요소인 .house에 원근 설정을 한다!
@@ -56,7 +56,7 @@ body{
   display: none;
 } */
 /* 1. 심슨 */
-.simpson {
+.saturn {
   position: absolute;
   top: 298px;
   left: 357px;
@@ -64,24 +64,11 @@ body{
   width: 34px;
 }
 
-/* 2. 문짝 */
-.door {
-  position: absolute;
-  top: 284px;
-  left: 357px;
-  /* 부모는? .house */
-
-  /* 문 회전축 오른쪽으로 변경 */
-  transform-origin: right;
-
-  /* 문 y축으로 회전테스트 */
-  /* rotate: y 130deg; */
-}
 
 .words {
   /* 앱솔루트 포지션 */
   position: absolute;
-  left: 161px;
+  left: 131px;
   top: -11px;
   /* 부모는?. house */
   background-color: #ffffff;
@@ -148,17 +135,17 @@ font:스두크/줄체 -> 크체 필수 */
 }
 
 /* 3.마지심슨 */
-.marge {
+.moon {
   position: absolute;
-  bottom: -217px;
-  right: -283px; /* -211px; */
+  bottom: 32px;
+  right: -340px; /* -211px; */
   rotate: 0deg; /* -15deg; */
   transform-origin: bottom;
   width: 424px;
 }
 
 /* 4. 리사심슨 */
-.lisa {
+.sun {
   position: absolute;
   top: 21px;
   left: -360px;
@@ -167,18 +154,18 @@ font:스두크/줄체 -> 크체 필수 */
 }
 
 /* 5.메기심슨 */
-.maggie {
+.s-man {
   position: absolute;
   bottom: -165px;
   left: 128px;
   width: 125px;
 }
 /* 6.바트심슨 */
-.bart {
+.pluto {
   position: absolute;
   top:  -310px;
   right: 143px;
-  width: 233px;
+  width: 172px;
   /* 거꾸로 돌리기 */
   rotate: 180deg;
 }

@@ -37,13 +37,13 @@ rotate: y 각도deg; */
 }
 
 /* 2-1. 심슨 애니 호출설정 */
-.simpson {
+.saturn {
   /* 애니메이션 - animation: 이시이지반방마 */
-  animation: simpson-ani 4.5s 0.5s forwards;
+  animation: saturn-ani 4.5s 0.5s forwards;
 }
 
 /* 2-2. 심슨 걸어나오기 키프레임 */
-@keyframes simpson-ani {
+@keyframes saturn-ani {
   0% {
     top: 298px;
     left: 357px;
@@ -116,13 +116,13 @@ rotate: y 각도deg; */
 
 /* 3. 마지심슨 튀어나오기 호출설정 */
 
-.marge {
+.moon {
   /* 애니메이션 - animation: 이시이지반방마 */
-  animation: marge-ani 1s ease-out 5s forwards;
+  animation: moon-ani 1s ease-out 5s forwards;
 }
 
 /* 마지 애니 키프레임 */
-@keyframes marge-ani {
+@keyframes moon-ani {
   /* from 혹은 0% 설정이 원본세팅과 같다면 생략이 가능하다 */
   /* to 혹은 100% 세팅만 설정 */
   to {
@@ -132,73 +132,73 @@ rotate: y 각도deg; */
 }
 
 /* 4. 리사심슨 튀어나오기 호출설정 */
-.lisa {
-  animation: lisa-ani 1s ease-out 5.5s forwards;
+.sun {
+  animation: sun-ani 1s ease-out 5.5s forwards;
 }
 /* 리사 애니 키프레임 */
-@keyframes lisa-ani {
+@keyframes sun-ani {
   to {
     left: -58px;
   }
 }
 
 /* 5.메기심슨 나오기 호출설정 */
-.maggie {
+.s-man{
   /* 메기 등장 */
   animation:
-  maggie-ani 1s ease-out 6s forwards,
+ s-man-ani 1s ease-out 6s forwards,
   /* 업다운애니 */ 
-  maggie-updown-ani 0.5s ease-in-out 7s infinite alternate,
+ s-man-updown-ani 0.5s ease-in-out 7s infinite alternate,
   /* 왔다갔다 */
-  maggie-comego-ani 8s ease-in-out 11s infinite alternate;
+ s-man-comego-ani 8s ease-in-out 11s infinite alternate;
 }
 /* 메기 애니 키프레임 */
-@keyframes maggie-ani {
+@keyframes s-man-ani {
   to {
-    bottom: -35px;
+    bottom: 97px;
     left: 128px;
     width: 125px;
   }
 }
 /* 메기 업다운 */
-@keyframes maggie-updown-ani {
+@keyframes s-man-updown-ani {
   to {
     translate: 0 5%;
   }
 }
 /* 메기 왔다갔다 */
-@keyframes maggie-comego-ani {
+@keyframes s-man-comego-ani {
   to{
     translate: 570px; 
   }
 }
 /* 6-1.바트심슨 애니*/
-.bart {
+.pluto {
   /* 바트등장 */
-  animation: bart-ani 0.8s ease-out 7s forwards,
-    /* 바트떨어짐 */ bart-falling-ani 0.5s ease-in 8.5s forwards,
-    /* 바트올라옴 */ bart-up-ani 1s ease-out 11s forwards;
+  animation: pluto-ani 0.8s ease-out 7s forwards,
+    /* 바트떨어짐 */ pluto-falling-ani 0.5s ease-in 8.5s forwards,
+    /* 바트올라옴 */ pluto-up-ani 1s ease-out 11s forwards;
 }
 
 /* 6-2-1바트심슨 키프레임 : 등장애니 */
-@keyframes bart-ani {
+@keyframes pluto-ani {
   to {
-    top: -150px;
+    top: -170px;
   }
 }
 /* 6-2-1바트심슨 키프레임 : 떨어지는애니 */
-@keyframes bart-falling-ani {
+@keyframes pluto-falling-ani {
   to {
     top: 458px;
     rotate: -36deg;
   }
 }
 /* 6-2-1바트심슨 키프레임 : 올라오는애니 */
-@keyframes bart-up-ani {
+@keyframes pluto-up-ani {
   to {
-    top: 250px;
+    top: 281px;
     rotate: 0deg;
-    right: 105px;
+    right: 165px;
     z-index: 1;
-  }
+}
 }
