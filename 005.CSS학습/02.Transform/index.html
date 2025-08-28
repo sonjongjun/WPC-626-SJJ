@@ -27,6 +27,8 @@
             2) cover -> 비율에 맞게 대상박스에 빈 공간이 없음
             3) 모두 채운후 비율없이 만드는 방법 100%, 100%*/
         background-size: cover;
+        /* 가로스크롤 없애기 */
+        overflow-x: hidden;
       }
       /* 1. 제목 */
       .main-title {
@@ -282,14 +284,27 @@ scale: 1 값; -> y축 확대/축소
       /* animate를 배우기 전이므로 :hoverfmf 사용! */
       .main-contents {
         /* 오른쪽 바깥에 나가있게 세팅함 translate사용! */
-        translate: 110%;
+        translate: 150%;
         /* 트랜지션 */
-        transition: 0.8s ease-in-out 1s;
+        /* transition: 1.5s ease-in-out 1s; */
+
+        /* 애니메이션이 있는경우 트랜지션 불필요 */
+        /* animation: 이시이지반방마 */
+        animation: first-ani 1.5s ease-in-out 1s forwards;
       }
       /* 오버시 등장 */
-      body:hover .main-contents {
+      /* body:hover .main-contents {
         translate: 0;
-      }
+      } */
+@keyframes first-ani {
+  to{
+    translate: 0;
+  }
+  
+}
+
+
+
       /* 뒤집히는 애니박스 */
       #transform-special {
         position: absolute;

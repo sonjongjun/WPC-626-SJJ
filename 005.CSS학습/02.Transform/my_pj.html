@@ -442,12 +442,20 @@ box-sizing:border-box 세팅해야함!!*/
         /* 오른쪽 바깥에 나가있게 세팅함 translate사용! */
         translate: 0 -150%;
         /* 트랜지션 */
-        transition: 1s ease-in-out 0.5s;
+        /* transition: 1s ease-in-out 0.5s; */
+        animation: first-ani 1.5s ease-in-out 1s forwards;
       }
       /* 오버시 등장 */
-      body:hover .main-contents {
+      /* body:hover .main-contents {
         translate: 0;
-      }
+      
+      } */
+
+      @keyframes first-ani {
+  to{
+    translate: 0;
+  }
+}
 
       /* span 타이틀 */
       .main-contents > div span {
