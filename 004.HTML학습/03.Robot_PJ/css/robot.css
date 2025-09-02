@@ -51,22 +51,25 @@ body * {
 /* 왼눈 */
 .eye1 {
   background-image: url(../images/e1.jpg);
-  left: 50px;
+  left: 50%;
+  translate: -130%;
 }
 /* 오른눈 */
 .eye2 {
   background-image: url(../images/e2.jpg);
-  right: 50px;
+  right: 50%;
+  translate: 130%;
 }
 
 /* 코 */
 .nose{
   background: url(../images/nose.jpg)no-repeat 0/110% 100%;
   top: 73px;
-  left: 97px;
+  left: 50%;
   width: 58px;
   height: 87px;
   border-radius: 40%;
+  translate: -50%;
 }
 /* 입 */
 .mouth{
@@ -74,7 +77,8 @@ body * {
    width: 148px;
     height: 84px;
     top: 159px;
-    left: 53px;
+    left: 50%;
+    translate: -50%;
 }
 
 
@@ -107,13 +111,105 @@ border-radius: 0  50% 50% 0;
   margin: 0 auto;
   margin-top: 50px;
 }
+  /* 몸통 자식요소 모두 앱솔루트 */
+  .robot-body>div{
+    position: absolute;
+  }
 /* 목  */
+.neck{
+ width: 84px;
+  height: 50px;
+  top: -50px;
+  left: 50%;
+  translate: -50%;
+}
+/* 팔공통 */
+.arm{
+  top: 0;
+  width: 50px;
+  height: 180px;
+
+}
 /* 왼팔 */
+.arm1{
+left: -50px;
+}
 /* 오른팔 */
+.arm2{
+right: -50px;
+}
+/* 팔하단 span */
+.arm span{
+position: absolute;
+top: 100%;
+left: 10%;
+width: 80%;
+height: 60%;
+border-radius: 25%;
+}
+/* 로봇손 가상요소 */
+.arm span::after{
+  content: '';
+  position: absolute;
+  top: 100%;
+  width: 65px;
+  height: 80px;
+  left: 58%;
+  translate: -50%;
+  background: url(../images/hand_left.png)no-repeat 0/100%;
+}
+/* 어깨공통 */
+.shdr{
+  width: 70px;
+  height: 80px;
+  top: -15px;
+  
+}
 /* 왼어깨 */
+.shdr1{
+  left: -60px;
+ border-radius: 50% 0  0 50% ;
+}
 /* 오른어깨 */
+.shdr2{
+  right: -60px;
+ border-radius: 0 50% 50% 0 ;
+}
+/* 다리공통 */
+.leg{
+  top: 100%;
+  width: 70px;
+  height: 170px;
+
+}
 /* 왼다리 */
+.leg1{
+  left: 0;
+
+}
 /* 오른다리 */
+.leg2{
+  right: 0;
+
+}
+/* 다리하단 span */
+.leg span{
+position: absolute;
+top: 100%;
+left: 10%;
+width: 80%;
+height: 70%;
+}
 /* TV */
+.tv{
+  top: 20%;
+  left: 50%;
+  width: 175px;
+  height: 140px;
+  background: url(../images/tv.jpg)no-repeat 0/100%;
+  translate: -50%;
+  border-radius: 25%;
+
+}
 
 /*************************************** 3.하단영역 ***************************************/
