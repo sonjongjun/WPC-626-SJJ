@@ -16,6 +16,10 @@ body {
 
 /* 2-1. 속박스 */
 .inbox {
+  /* 플렉스박스 */
+  display: flex;
+  /* 플렉스 랩핑 */
+  flex-wrap: wrap;
   /* 최대사이즈 지정 */
   max-width: 1440px;
   /* 마영오 */
@@ -23,11 +27,11 @@ body {
 }
 
 /* 인박스 클리어 + 클리어클래스 세팅*/
-.inbox::after, .clb::after {
+/* .inbox::after, .clb::after {
   content: " ";
   display: block;
   clear: both;
-}
+} */
 
 /* 2-2파티션 박스 */
 /* .inbox 내부에 옆으로 흘러가는
@@ -35,7 +39,7 @@ body {
 float방식으로 구현할 경우
 부모박스의 가상요소로 clear한다! */
 .part-box {
-  float: left;
+  /* float: left; */
 
   /* 임시 최소높이 */
   /* min-height: 200px; */
