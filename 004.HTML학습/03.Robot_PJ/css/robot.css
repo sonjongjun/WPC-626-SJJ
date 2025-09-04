@@ -21,6 +21,11 @@ body * {
 .main-area {
   padding-top: 150px;
 }
+
+/* 로봇박스 */
+.robot-box{
+  padding-bottom: 440px;
+}
 /* 로봇머리 */
 .robot-head {
   /* 부모자격 - 자식 앱솔루트의 부모 */
@@ -180,7 +185,7 @@ body * {
 .arm::before,
 .arm::after,
 .leg::after,
-.leg::before{
+.leg::before {
   content: "";
   position: absolute;
   top: 90%;
@@ -195,12 +200,13 @@ body * {
   z-index: 1;
 }
 /* 팔관절 가상요소 after변경 */
-.arm::after,.leg::after {
+.arm::after,
+.leg::after {
   background-image: linear-gradient(to top #ccc, gray);
   /* 보더없애기 */
   border: none;
   /* 크기축소 x축 0.8 y축 0.5 */
-  scale: .9 .5;
+  scale: 0.9 0.5;
 }
 /* 왼팔 */
 .arm1 {
@@ -279,9 +285,37 @@ body * {
   width: 80%;
   height: 70%;
 }
+/* 로봇부츠 다리하단 span의 가상요소로 부츠상단before 만들기 */
+.leg span::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-image: linear-gradient(to left, #cb0e0e, rgb(89, 18, 18));
+  border-top: 4px solid #000;
+}
+
+/* 로봇부츠 다리하단 span의 가상요소로 부츠상단after 만들기 */
+
+.leg span::after {
+  content: "";
+  position: absolute;
+  bottom: -76%;
+  left: -40%;
+  width: 181%;
+  /* 패딩으로 높이값 만들기 */
+  padding-top: 250%;
+  background-image: linear-gradient(45deg, #c55656, rgb(163, 17, 17), #320606);
+  border-bottom: 4px solid #37350b;
+  border-radius: 25%;
+  border-top: 3px solid #000;
+}
+
 /* TV */
 .tv {
-  top: 20%;
+  top: 0%;
   left: 50%;
   width: 175px;
   height: 140px;
@@ -289,6 +323,137 @@ body * {
   translate: -50%;
   border-radius: 25%;
   z-index: 2;
+  border: 4px double #000;
 }
+/* 스크린 */
+.screen {
+  position: absolute;
+  top: 18px;
+  left: 11px;
+  width: 122px;
+  height: 95px;
+  border-radius: 15%;
+  background-color: red;
+  /* 넘치는 자식요소 숨기기 */
+  overflow: hidden;
+}
+.screen iframe{
+  position: absolute;
+  top: 0%;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  /* 기본보더 없앰 */
+  border: none;
+  border-radius: 15%;
+}
+/* 2-2. 설명박스 */
+.text-box{
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #00000067;
+  border-radius: 20px;
+  padding: 15px 30px;
+  /* 박스 2중 글로우효과(그림자로줌) */
+  box-shadow: 
+  inset 0 0 20px blue,
+  inset 0 0 50px 10px cyan;
+
+  /* 백드롭 블러효과주기 */
+  backdrop-filter: blur(6px);
+  /* 
+  [백드롭 필터효과] 
+  - filter속성과 동일한 셋팅을 가지며
+  적용대상이 겹쳐지는 하단의 그래픽을 변경한다!
+
+  backdrop-filter: blur(2px); -> 흐림
+  backdrop-filter: brightness(60%); -> 밝기
+  backdrop-filter: contrast(40%); -> 대비
+  backdrop-filter: drop-shadow(4px 4px 10px blue);->그림자
+  backdrop-filter: grayscale(30%);-> 흑백
+  backdrop-filter: hue-rotate(120deg); -> 색상변경
+  backdrop-filter: invert(70%); -> 반전색
+  backdrop-filter: opacity(20%); -> 투명도
+  backdrop-filter: sepia(90%); -> 세피아효과
+  backdrop-filter: saturate(80%); -> 채도
+
+  -> 복합적용 가능!
+  backdrop-filter: blur(4px) saturate(150%);
+  */
+}
+
+/* 2-2-1. 제목 */
+.text-box h2{
+  /* 스티키 포지션 */
+  position: sticky;
+  top: 10px;
+  /* top값이 고정위치값임! */
+
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 35px;
+  text-align: center;
+  background-color: #ffffff8d;
+  color: lime;
+  text-shadow: 2px 2px 2px #0000007b;
+  border-radius: 20px;
+  /* 기존 두꺼운체 해제 : fwn */
+  font-weight: normal;
+}
+/* 2-2-2. 출처 */
+.text-box small{
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 12px;
+  text-shadow: 1px 1px 1px #00000077;
+  color: #ff0;
+
+  /* 블록으로 변경해야 tac먹힘! */
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
+
+/* 2-2-3.내용단락 */
+.text-box p{
+  font-family: 'Barlow', sans-serif;
+  font-size: 17px;
+  /* 줄간격 */
+  line-height: 1.7;
+  /* 자간 */
+  letter-spacing: 1px;
+  /* 단어간격 */
+  word-spacing: 2px;
+
+  /* 다단설정하기
+    -> 다중열속성
+    column-count : 다중열개수
+    column-rule : 다중열구분선
+    column-gap : 다중열사이간격
+  */
+  column-count: 3;
+  column-rule: 5px dotted lightgreen;
+  /* 다중열 구분선 값은 보더와 같음
+  -> 두종색! -> 두께 종류 색상 */
+  column-gap: 55px;
+
+  /* 양쪽정렬 : justify */
+  text-align: justify;
+  /* 영문에서 양쪽 정렬일 경우
+  단어단위로 줄바꿈이 되므로 중간에
+  구멍이 생김. 따라서 단어깨기설정필요! */
+  /* 단어깨기 : 모두깨기(break-all) */
+  word-break: break-all;
+
+  /* 첫줄 들여쓰기 : text-indent (ti) */
+  text-indent: 40px;
+
+}
+/* 가상요소 첫글자 적용하기 */
+.text-box p::first-letter{
+  font-size: 30px;
+  font-weight: bold;
+  color: hotpink;
+}
+
 
 /*************************************** 3.하단영역 ***************************************/
