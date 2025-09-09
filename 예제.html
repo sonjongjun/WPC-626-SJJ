@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피자스톰 유사 피자전문점 웹사이트 구축 분석서</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .page {
+            width: 1123px; /* A4 가로 */
+            min-height: 794px; /* A4 세로 */
+            background: white;
+            margin: 0 auto 30px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            page-break-after: always;
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section {
+            background: #f8f9fa;
+            border-left: 5px solid #ff6b6b;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h2::before {
+            content: '🍕';
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #ffa500;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .quadrant {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
+            height: 400px;
+            margin: 20px 0;
+        }
+        
+        .quad-item {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            position: relative;
+        }
+        
+        .quad-item:nth-child(1) { background: linear-gradient(45deg, #ff6b6b, #ffa500); color: white; }
+        .quad-item:nth-child(2) { background: linear-gradient(45deg, #4ecdc4, #44a08d); color: white; }
+        .quad-item:nth-child(3) { background: linear-gradient(45deg, #a8e6cf, #88d8c0); }
+        .quad-item:nth-child(4) { background: linear-gradient(45deg, #ffd93d, #ff6b6b); color: white; }
+        
+        .persona-card {
+            background: white;
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .persona-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .persona-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+            margin-right: 20px;
+        }
+        
+        .scenario-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .flow-step {
+            background: #f8f9fa;
+            border: 2px solid #ff6b6b;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+            margin: 0 5px;
+            position: relative;
+        }
+        
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            color: #ff6b6b;
+        }
+        
+        .flow-step:last-child::after {
+            display: none;
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 300px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pie-chart {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #ff6b6b 0% 35%,
+                #ffa500 35% 60%,
+                #4ecdc4 60% 80%,
+                #667eea 80% 100%
+            );
+            position: relative;
+        }
+        
+        .chart-legend {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+        
+        .improvement-box {
+            background: linear-gradient(135deg, #a8e6cf, #88d8c0);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .improvement-box h4 {
+            color: #2d5a27;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #856404;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- 페이지 1: 표지 및 수행 개요 -->
+    <div class="page">
+        <div class="header">
+            <h1>피자스톰 유사 피자전문점 웹사이트 구축</h1>
+            <p>사용자 경험 중심의 서비스·경험 시나리오 분석</p>
+        </div>
+        
+        <div class="section">
+            <h2>수행 개요</h2>
+            <p style="font-size: 1.1em; line-height: 1.8;">
+                본 연구는 <strong>피자스톰과 유사한 피자 전문점 웹사이트 구축</strong>을 위한 종합적인 사용자 분석 및 서비스 설계를 목표로 합니다. 
+                급변하는 디지털 시대에서 피자 배달 서비스는 단순한 주문 플랫폼을 넘어 사용자의 라이프스타일과 밀접하게 연결된 경험 서비스로 발전하고 있습니다.
+            </p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>🎯 연구 목적</h3>
+                    <ul>
+                        <li>피자 전문점 이용 고객의 다양한 유형 분석</li>
+                        <li>사용자 중심의 페르소나 개발</li>
+                        <li>최적화된 사용자 경험 시나리오 설계</li>
+                        <li>차별화된 서비스 전략 수립</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>🔍 연구 범위</h3>
+                    <ul>
+                        <li>2025년 기준 국내외 피자 시장 분석</li>
+                        <li>온라인 주문 및 배달 서비스 이용 패턴</li>
+                        <li>주요 타겟 고객층의 행동 특성</li>
+                        <li>경쟁사 대비 차별화 포인트 도출</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="stat-box">
+                <span class="stat-number">2조원</span>
+                <p>2025년 국내 피자 시장 규모</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이지 2: 시장 분석 -->
+    <div class="page">
+        <div class="section">
+            <h2>(1) 사용자 분석을 위한 객관적 근거자료</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>🇰🇷 한국 피자 시장 (2025년)</h3>
+                    <div class="stat-box">
+                        <span class="stat-number">약 2조원</span>
+                        <p>전체 시장 규모</p>
+                    </div>
+                    <ul>
+                        <li>프랜차이즈 브랜드 급속 성장</li>
+                        <li>중저가 피자 브랜드 증가 (253개 브랜드)</li>
+                        <li>점포 수 19.6% 증가 (7,023개 → 8,403개)</li>
+                        <li>냉동피자 시장 31.1% 성장 (1,267억원)</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>🌍 세계 피자 시장 비교</h3>
+                    <div class="stat-box">
+                        <span class="stat-number">$229.1B</span>
+                        <p>2025년 글로벌 시장 규모</p>
+                    </div>
+                    <ul>
+                        <li>연평균 성장률(CAGR): 5.42% (2025-2032)</li>
+                        <li>북미 시장 점유율: 38.83%</li>
+                        <li>2033년 예상 규모: $1,154.57억</li>
+                        <li>온라인 주문 시스템 급속 확산</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="pie-chart"></div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ff6b6b;"></div>
+                        <span>프리미엄 브랜드 (35%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ffa500;"></div>
+                        <span>중저가 브랜드 (25%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #4ecdc4;"></div>
+                        <span>로컬 브랜드 (20%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #667eea;"></div>
+                        <span>냉동/간편식 (20%)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>📊 주요 시장 트렌드</h3>
+                <ul>
+                    <li><span class="highlight">디지털 전환 가속화</span>: 모바일 앱 주문 비율 지속 증가</li>
+                    <li><span class="highlight">배달 서비스 혁신</span>: AI 기반 예측 주문 시스템 도입</li>
+                    <li><span class="highlight">가격 경쟁 심화</span>: 중저가 브랜드 급증으로 출혈 경쟁</li>
+                    <li><span class="highlight">개인화 서비스</span>: 고객 데이터 기반 맞춤형 메뉴 추천</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이지 3: 사용자 유형 구분 -->
+    <div class="page">
+        <div class="section">
+            <h2>(2) 사용자 유형 구분 4사분면 모형</h2>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <p><strong>기준 축:</strong> X축 - 기술 활용도 (낮음 ↔ 높음) / Y축 - 가격 민감도 (낮음 ↔ 높음)</p>
+            </div>
+            
+            <div class="quadrant">
+                <div class="quad-item">
+                    <h3>🎯 프리미엄 추구형</h3>
+                    <p><strong>고기술 활용 + 저가격 민감</strong></p>
+                    <ul style="text-align: left;">
+                        <li>최신 기술 서비스 선호</li>
+                        <li>품질과 편의성 중시</li>
+                        <li>브랜드 충성도 높음</li>
+                        <li>프리미엄 가격 수용</li>
+                    </ul>
+                </div>
+                
+                <div class="quad-item">
+                    <h3>🤝 스마트 절약형</h3>
+                    <p><strong>고기술 활용 + 고가격 민감</strong></p>
+                    <ul style="text-align: left;">
+                        <li>앱 쿠폰/할인 적극 활용</li>
+                        <li>가격 비교 후 주문</li>
+                        <li>리뷰/평점 꼼꼼히 확인</li>
+                        <li>가성비 중시</li>
+                    </ul>
+                </div>
+                
+                <div class="quad-item">
+                    <h3>📞 전통 충실형</h3>
+                    <p><strong>저기술 활용 + 저가격 민감</strong></p>
+                    <ul style="text-align: left;">
+                        <li>전화 주문 선호</li>
+                        <li>단골 매장 이용</li>
+                        <li>메뉴 변화 적게 선호</li>
+                        <li>서비스 질 중시</li>
+                    </ul>
+                </div>
+                
+                <div class="quad-item">
+                    <h3>💰 경제적 실용형</h3>
+                    <p><strong>저기술 활용 + 고가격 민감</strong></p>
+                    <ul style="text-align: left;">
+                        <li>단순한 주문 방식 선호</li>
+                        <li>할인 정보에 민감</li>
+                        <li>기본 메뉴 위주 주문</li>
+                        <li>최저가 브랜드 이용</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이지 4: 주요 사용자 그룹 특성 분석 -->
+    <div class="page">
+        <div class="section">
+            <h2>(3) 주요 사용자 그룹 특성 분석</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>🏃‍♂️ 물리적 특성</h3>
+                    <ul>
+                        <li><strong>연령대:</strong> 20-40대 중심 (74%)</li>
+                        <li><strong>지역분포:</strong> 수도권 집중 (60%)</li>
+                        <li><strong>주거형태:</strong> 아파트 거주 (68%)</li>
+                        <li><strong>접근성:</strong> 스마트폰 보급률 95%</li>
+                        <li><strong>이동성:</strong> 대중교통 이용률 높음</li>
+                        <li><strong>근무환경:</strong> 오피스 밀집지역 거주</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>🧠 심리적 특성</h3>
+                    <ul>
+                        <li><strong>편의성 추구:</strong> 빠른 배달 서비스 선호</li>
+                        <li><strong>선택 피로:</strong> 너무 많은 옵션 기피</li>
+                        <li><strong>신뢰성 중시:</strong> 리뷰/평점 의존도 높음</li>
+                        <li><strong>개인화 욕구:</strong> 맞춤형 서비스 선호</li>
+                        <li><strong>사회적 연결:</strong> SNS 공유 활동 빈번</li>
+                        <li><strong>안전 의식:</strong> 위생과 품질에 민감</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>🎓 경험 및 지식 수준</h3>
+                    <ul>
+                        <li><strong>디지털 리터러시:</strong> 중상급 수준 (78%)</li>
+                        <li><strong>브랜드 인지도:</strong> 메이저 브랜드 우선 인식</li>
+                        <li><strong>배달 서비스 경험:</strong> 주 2-3회 이상 이용</li>
+                        <li><strong>결제 방식 숙련도:</strong> 카드/간편결제 선호</li>
+                        <li><strong>앱 사용 능력:</strong> 다양한 배달 앱 경험</li>
+                        <li><strong>메뉴 지식:</strong> 피자 토핑/종류에 대한 기본 지식</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>📱 이용 행태적 특성</h3>
+                    <ul>
+                        <li><strong>주문 시간대:</strong> 저녁 7-9시 집중 (42%)</li>
+                        <li><strong>주문 방식:</strong> 모바일 앱 우선 (78%)</li>
+                        <li><strong>재주문 패턴:</strong> 즐겨찾기 메뉴 반복 이용</li>
+                        <li><strong>그룹 주문:</strong> 2-4인 가구 중심 주문</li>
+                        <li><strong>결제 선호:</strong> 신용카드/간편결제 (89%)</li>
+                        <li><strong>배송 추적:</strong> 실시간 배송 상황 확인 선호</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>📊 사용자 그룹별 비중 및 특징</h3>
+                <div style="display: flex; justify-content: space-between; margin: 15px 0;">
+                    <div style="flex: 1; margin: 0 5px; text-align: center;">
+                        <div style="background: #DC143C; color: white; padding: 15px; border-radius: 8px;">
+                            <strong>프리미엄 추구형</strong><br>
+                            <span style="font-size: 1.5em;">28%</span><br>
+                            <small>고수익, 브랜드 충성</small>
+                        </div>
+                    </div>
+                    <div style="flex: 1; margin: 0 5px; text-align: center;">
+                        <div style="background: #228B22; color: white; padding: 15px; border-radius: 8px;">
+                            <strong>스마트 절약형</strong><br>
+                            <span style="font-size: 1.5em;">35%</span><br>
+                            <small>가성비 중시, 할인 민감</small>
+                        </div>
+                    </div>
+                    <div style="flex: 1; margin: 0 5px; text-align: center;">
+                        <div style="background: #FFA500; color: white; padding: 15px; border-radius: 8px;">
+                            <strong>전통 충실형</strong><br>
+                            <span style="font-size: 1.5em;">22%</span><br>
+                            <small>단골 중시, 안정 추구</small>
+                        </div>
+                    </div>
+                    <div style="flex: 1; margin: 0 5px; text-align: center;">
+                        <div style="background: #8B4513; color: white; padding: 15px; border-radius: 8px;">
+                            <strong>경제적 실용형</strong><br>
+                            <span style="font-size: 1.5em;">15%</span><br>
+                            <small>최저가 추구, 단순함 선호</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이지 5: 페르소나 설정 -->    <p><strong>저기술 활용 + 고가격 민감</strong></p>
+                    <ul style="text-align: left;">
+                        <li>단순한 주문 방식 선호</li>
+                        <li>할인 정보에 민감</li>
+                        <li>기본 메뉴 위주 주문</li>
+                        <li>최저가 브랜드 이용</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>(3) 주요 사용자 그룹 특성 분석</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>물리적 특성</h3>
+                    <ul>
+                        <li><strong>연령대:</strong> 20-40대 중심 (74%)</li>
+                        <li><strong>지역:</strong> 수도권 집중 (60%)</li>
+                        <li><strong>주거형태:</strong> 아파트 거주 (68%)</li>
+                        <li><strong>접근성:</strong> 스마트폰 보급률 95%</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>심리적 특성</h3>
+                    <ul>
+                        <li><strong>편의성 추구:</strong> 빠른 배달 선호</li>
+                        <li><strong>선택 피로:</strong> 너무 많은 옵션 기피</li>
+                        <li><strong>신뢰성 중시:</strong> 리뷰/평점 의존도 높음</li>
+                        <li><strong>개인화 욕구:</strong> 맞춤형 서비스 선호</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>경험 및 지식</h3>
+                    <ul>
+                        <li><strong>디지털 리터러시:</strong> 중상급 수준</li>
+                        <li><strong>브랜드 인지도:</strong> 메이저 브랜드 우선 인식</li>
+                        <li><strong>배달 경험:</strong> 주 2-3회 이상</li>
+                        <li><strong>결제 방식:</strong> 카드/간편결제 선호</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>이용 행태</h3>
+                    <ul>
+                        <li><strong>주문 시간:</strong> 저녁 7-9시 집중</li>
+                        <li><strong>주문 방식:</strong> 모바일 앱 (78%)</li>
+                        <li><strong>반복 주문:</strong> 즐겨찾기 메뉴 활용</li>
+                        <li><strong>그룹 주문:</strong> 2-4인 가구 중심</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이지 4: 페르소나 설정 -->
+    <div class="page">
+        <div class="section">
+            <h2>(4) 페르소나 기본정보</h2>
+            
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">👨</div>
+                    <div>
+                        <h3>김민준 (29세, 직장인)</h3>
+                        <p><strong>유형:</strong> 스마트 절약형 | <strong>직업:</strong> IT 회사 사원 | <strong>거주지:</strong> 서울 강남구</p>
+                    </div>
+                </div>
+                
+                <div class="grid">
+                    <div>
+                        <h4>📱 기술 활용도: 상급</h4>
+                        <ul>
+                            <li>스마트폰, 태블릿 능숙하게 사용</li>
+                            <li>각종 배달 앱 5개 이상 설치</li>
+                            <li>온라인 결제 익숙</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>💰 가격 민감도: 높음</h4>
+                        <ul>
+                            <li>월 배달음식비: 15-20만원</li>
+                            <li>쿠폰/할인 적극 활용</li>
+                            <li>가격 비교 후 주문</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">👩</div>
+                    <div>
+                        <h3>박서연 (35세, 주부)</h3>
+                        <p><strong>유형:</strong> 프리미엄 추구형 | <strong>직업:</strong> 프리랜서 | <strong>거주지:</strong> 성남시 분당구</p>
+                    </div>
+                </div>
+                
+                <div class="grid">
+                    <div>
+                        <h4>📱 기술 활용도: 중상급</h4>
+                        <ul>
+                            <li>주로 스마트폰 앱 사용</li>
+                            <li>간편결제 서비스 애용</li>
+                            <li>리뷰/평점 꼼꼼히 확인</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>💰 가격 민감도: 중간</h4>
+                        <ul>
+                            <li>품질 대비 적정가격 수용</li>
+                            <li>가족 건강 우선 고려</li>
+                            <li>프리미엄 브랜드 선호</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>(5) 페르소나 상세 정보</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>🎯 김민준의 상세 배경</h3>
+                    <ul>
+                        <li><strong>라이프스타일:</strong> 야근이 잦은 바쁜 직장생활</li>
+                        <li><strong>주거환경:</strong> 원룸 거주, 혼자 생활</li>
+                        <li><strong>취미:</strong> 게임, 넷플릭스 시청</li>
+                        <li><strong>소득수준:</strong> 월 350만원 (세후)</li>
+                        <li><strong>주문패턴:</strong> 주 3-4회, 야식 시간대</li>
+                        <li><strong>선호메뉴:</strong> 콤비네이션, 페퍼로니</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>👨‍👩‍👧‍👦 박서연의 상세 배경</h3>
+                    <ul>
+                        <li><strong>라이프스타일:</strong> 두 아이를 둔 워킹맘</li>
+                        <li><strong>주거환경:</strong> 4인 가구, 아파트 거주</li>
+                        <li><strong>취미:</strong> 요리, 독서, 온라인 쇼핑</li>
+                        <li><strong>소득수준:</strong> 가구 월소득 600만원</li>
+                        <li><strong>주문패턴:</strong> 주 1-2회, 가족 식사용</li>
+                        <li><strong>선호메뉴:</strong> 야채피자, 하와이안</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="improvement-box">
+                <h4>🔍 페르소나 설정 근거</h4>
+                <p>두 페르소나는 국내 피자 배달 서비스 이용자의 약 68%를 대표하는 주요 고객층으로, 
+                각각 다른 니즈와 행동 패턴을 보여줍니다. 이들의 특성을 반영한 차별화된 서비스 전략이 필요합니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이지 5: 서비스 시나리오 -->
+    <div class="page">
+        <div class="section">
+            <h2>(6) 사용자 경험 중심 서비스 시나리오</h2>
+            
+            <div class="card">
+                <h3>🎬 시나리오 유형: 할인 혜택 활용 주문 시나리오 (김민준)</h3>
+                
+                <div class="scenario-flow">
+                    <div class="flow-step">
+                        <strong>상황 인식</strong><br>
+                        퇴근 후 집에서<br>
+                        배고픔 느낌
+                    </div>
+                    <div class="flow-step">
+                        <strong>앱 실행</strong><br>
+                        피자 앱 실행<br>
+                        할인 정보 확인
+                    </div>
+                    <div class="flow-step">
+                        <strong>메뉴 선택</strong><br>
+                        가격 비교<br>
+                        쿠폰 적용
+                    </div>
+                    <div class="flow-step">
+                        <strong>주문 완료</strong><br>
+                        간편결제<br>
+                        배송 추적
+                    </div>
+                </div>
+                
+                <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                    <p><strong>시나리오 상세:</strong></p>
+                    <p>목요일 저녁 8시, 야근을 마치고 집에 도착한 김민준은 냉장고가 비어있음을 확인하고 피자 앱을 실행합니다. 
+                    앱 첫 화면에서 "오늘만 30% 할인" 팝업을 보고 관심을 가집니다. 평소 즐겨먹던 콤비네이션 피자의 가격을 확인하고, 
+                    다른 브랜드와 비교한 후 가장 저렴한 곳을 선택합니다. 쿠폰을 적용해 최종 가격을 확인하고 카카오페이로 결제를 완료합니다.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>👨‍👩‍👧‍👦 가족 식사 주문 시나리오 (박서연)</h3>
+                
+                <div class="scenario-flow">
+                    <div class="flow-step">
+                        <strong>가족 식사 계획</strong><br>
+                        주말 저녁<br>
+                        요리 부담 느낌
+                    </div>
+                    <div class="flow-step">
+                        <strong>가족 의견 수렴</strong><br>
+                        아이들과 상의<br>
+                        메뉴 논의
+                    </div>
+                    <div class="flow-step">
+                        <strong>건강한 옵션 검토</strong><br>
+                        영양정보 확인<br>
+                        리뷰 검토
+                    </div>
+                    <div class="flow-step">
+                        <strong>다중 메뉴 주문</strong><br>
+                        가족용 세트<br>
+                        안전한 결제
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>(7) 페르소나별 서비스 이용 동기</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>💡 김민준의 이용 동기</h3>
+                    <ul>
+                        <li><strong>편의성:</strong> "요리할 시간도 에너지도 없다"</li>
+                        <li><strong>경제성:</strong> "최대한 저렴하게 배불리 먹고 싶다"</li>
+                        <li><strong>신속성:</strong> "빨리 배달되어야 한다"</li>
+                        <li><strong>단순성:</strong> "복잡한 과정 없이 쉽게 주문하고 싶다"</li>
+                        <li><strong>정보성:</strong> "할인 정보를 놓치고 싶지 않다"</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>👪 박서연의 이용 동기</h3>
+                    <ul>
+                        <li><strong>가족 만족:</strong> "온 가족이 좋아할 메뉴를 찾고 싶다"</li>
+                        <li><strong>건강 고려:</strong> "아이들에게 해롭지 않은 음식"</li>
+                        <li><strong>품질 신뢰:</strong> "믿을 수 있는 브랜드에서 주문"</li>
+                        <li><strong>시간 절약:</strong> "요리 시간을 다른 일에 활용"</li>
+                        <li><strong>특별함:</strong> "가족과의 즐거운 시간 연출"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이지 6: 문제점 및 개선방안 -->
+    <div class="page">
+        <div class="section">
+            <h2>(8) 사용자 니즈 및 웹사이트 문제점</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>😣 현재 웹사이트 주요 문제점</h3>
+                    <ul>
+                        <li><strong>복잡한 UI:</strong> 너무 많은 메뉴와 옵션으로 인한 선택 피로</li>
+                        <li><strong>느린 로딩:</strong> 이미지가 많아 페이지 로딩 속도 지연</li>
+                        <li><strong>할인 정보 부족:</strong> 쿠폰/프로모션 정보 접근성 낮음</li>
+                        <li><strong>개인화 부족:</strong> 이전 주문 기록 기반 추천 시스템 미흡</li>
+                        <li><strong>결제 단계 복잡:</strong> 여러 단계의 결제 과정</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>🎯 사용자별 핵심 니즈</h3>
+                    
+                    <div style="margin: 15px 0;">
+                        <h4 style="color: #DC143C;">👨 김민준 (스마트 절약형)</h4>
+                        <ul>
+                            <li>실시간 할인 정보 알림</li>
+                            <li>원클릭 재주문 기능</li>
+                            <li>가격 비교 도구</li>
+                            <li>빠른 결제 시스템</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin: 15px 0;">
+                        <h4 style="color: #228B22;">👩 박서연 (프리미엄 추구형)</h4>
+                        <ul>
+                            <li>영양정보 및 원재료 표시</li>
+                            <li>가족용 맞춤 메뉴 추천</li>
+                            <li>신뢰할 수 있는 리뷰 시스템</li>
+                            <li>안전한 결제 보장</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>📊 문제점 우선순위 분석</h3>
+                <div style="display: flex; justify-content: space-between; margin: 15px 0;">
+                    <div style="flex: 1; margin: 0 10px;">
+                        <div style="background: #ff6b6b; color: white; padding: 10px; border-radius: 5px; text-align: center;">
+                            <strong>긴급도 높음</strong><br>
+                            결제 시스템 개선<br>
+                            로딩 속도 최적화
+                        </div>
+                    </div>
+                    <div style="flex: 1; margin: 0 10px;">
+                        <div style="background: #ffa500; color: white; padding: 10px; border-radius: 5px; text-align: center;">
+                            <strong>중요도 높음</strong><br>
+                            개인화 추천 시스템<br>
+                            할인 정보 시각화
+                        </div>
+                    </div>
+                    <div style="flex: 1; margin: 0 10px;">
+                        <div style="background: #4ecdc4; color: white; padding: 10px; border-radius: 5px; text-align: center;">
+                            <strong>장기 개선</strong><br>
+                            UI/UX 전면 개편<br>
+                            고객 서비스 확대
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>(9) 개선방향 및 아이디어</h2>
+            
+            <div class="improvement-box">
+                <h4>🚀 즉시 적용 가능한 개선사항</h4>
+                <div class="grid">
+                    <div>
+                        <strong>1. 원클릭 재주문 시스템</strong>
+                        <ul>
+                            <li>최근 주문 내역을 메인 화면에 표시</li>
+                            <li>"똑같이 주문하기" 버튼 추가</li>
+                            <li>주문 패턴 학습 알고리즘 도입</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>2. 스마트 할인 알림</strong>
+                        <ul>
+                            <li>개인 맞춤형 쿠폰 발송</li>
+                            <li>실시간 가격 비교 기능</li>
+                            <li>할인 타이머 표시</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="improvement-box">
+                <h4>🎯 중기 전략 개선사항</h4>
+                <div class="grid">
+                    <div>
+                        <strong>3. AI 기반 메뉴 추천</strong>
+                        <ul>
+                            <li>날씨/시간대별 메뉴 추천</li>
+                            <li>가족 구성원별 맞춤 추천</li>
+                            <li>영양 균형 고려 추천</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>4. 향상된 사용자 인터페이스</strong>
+                        <ul>
+                            <li>직관적인 카테고리 분류</li>
+                            <li>이미지 최적화로 빠른 로딩</li>
+                            <li>음성 주문 기능 추가</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="improvement-box">
+                <h4>🌟 혁신적 장기 비전</h4>
+                <div class="grid">
+                    <div>
+                        <strong>5. 예측 주문 시스템</strong>
+                        <ul>
+                            <li>사용자 패턴 분석으로 사전 준비</li>
+                            <li>배달 시간 단축 (15분 → 10분)</li>
+                            <li>재고 최적화 시스템 연동</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>6. 커뮤니티 기능 확장</strong>
+                        <ul>
+                            <li>가족/친구 그룹 주문 기능</li>
+                            <li>피자 커스터마이징 공유</li>
+                            <li>리워드 시스템 도입</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-box">
+                <p><strong>예상 효과</strong></p>
+                <div style="display: flex; justify-content: space-around; margin-top: 15px;">
+                    <div>
+                        <span class="stat-number" style="font-size: 1.5em;">25%</span>
+                        <p>주문 전환율 증가</p>
+                    </div>
+                    <div>
+                        <span class="stat-number" style="font-size: 1.5em;">40%</span>
+                        <p>재주문율 향상</p>
+                    </div>
+                    <div>
+                        <span class="stat-number" style="font-size: 1.5em;">30%</span>
+                        <p>고객 만족도 상승</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이지 7: 결론 및 기대효과 -->
+    <div class="page">
+        <div class="section">
+            <h2>🎯 결론 및 기대효과</h2>
+            
+            <div class="card">
+                <h3>📋 핵심 결론</h3>
+                <p style="font-size: 1.1em; line-height: 1.8;">
+                    피자스톰과 유사한 피자 전문점 웹사이트 구축을 위해서는 <span class="highlight">사용자 중심의 차별화된 서비스 전략</span>이 필수입니다. 
+                    특히 '스마트 절약형'과 '프리미엄 추구형' 고객의 서로 다른 니즈를 모두 만족시킬 수 있는 
+                    <strong>개인화된 사용자 경험</strong>을 제공해야 합니다.
+                </p>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>🏆 주요 성공 요인</h3>
+                    <ul>
+                        <li><strong>데이터 기반 개인화:</strong> 고객별 맞춤형 서비스 제공</li>
+                        <li><strong>직관적 UX 설계:</strong> 복잡성 제거, 사용 편의성 극대화</li>
+                        <li><strong>실시간 가치 제공:</strong> 할인 정보, 빠른 배송</li>
+                        <li><strong>신뢰성 구축:</strong> 투명한 정보 제공, 안전한 결제</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>📈 예상 비즈니스 임팩트</h3>
+                    <ul>
+                        <li><strong>매출 증대:</strong> 주문 전환율 25% 향상</li>
+                        <li><strong>고객 유지:</strong> 재주문율 40% 증가</li>
+                        <li><strong>운영 효율:</strong> AI 기반 재고/배송 최적화</li>
+                        <li><strong>브랜드 강화:</strong> 고객 만족도 30% 상승</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>⚡ 즉시 실행 로드맵</h3>
+                    <div style="margin: 15px 0;">
+                        <div style="background: #ff6b6b; color: white; padding: 8px; border-radius: 5px; margin: 5px 0;">
+                            <strong>1주차:</strong> 원클릭 재주문 기능 개발
+                        </div>
+                        <div style="background: #ffa500; color: white; padding: 8px; border-radius: 5px; margin: 5px 0;">
+                            <strong>2주차:</strong> 할인 알림 시스템 구축
+                        </div>
+                        <div style="background: #4ecdc4; color: white; padding: 8px; border-radius: 5px; margin: 5px 0;">
+                            <strong>1개월:</strong> AI 추천 시스템 도입
+                        </div>
+                        <div style="background: #667eea; color: white; padding: 8px; border-radius: 5px; margin: 5px 0;">
+                            <strong>3개월:</strong> 전면 UI/UX 개편 완료
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🎯 차별화 전략</h3>
+                    <ul>
+                        <li><strong>경쟁사 대비 우위:</strong>
+                            <ul style="margin-top: 10px;">
+                                <li>더 빠른 배달 시간 (10분 단축)</li>
+                                <li>더 정확한 개인화 추천</li>
+                                <li>더 투명한 가격 정책</li>
+                                <li>더 안전한 결제 시스템</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="stat-box">
+                <p style="font-size: 1.3em; margin-bottom: 20px;"><strong>🌟 최종 기대효과</strong></p>
+                <div style="display: flex; justify-content: space-around;">
+                    <div style="text-align: center;">
+                        <span class="stat-number">200%</span>
+                        <p>사용자 참여도 증가</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span class="stat-number">150%</span>
+                        <p>브랜드 인지도 향상</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span class="stat-number">300%</span>
+                        <p>고객 생애가치 증대</p>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; font-style: italic;">
+                    "사용자 중심의 혁신적 서비스로 피자 배달 시장의 새로운 표준을 제시하겠습니다."
+                </p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 15px;">
+            <h2>🚀 Next Steps</h2>
+            <p>이 분석을 바탕으로 실제 웹사이트 프로토타입 개발을 시작하고, 
+            지속적인 사용자 피드백을 통해 서비스를 개선해 나가겠습니다.</p>
+        </div>
+    </div>
+
+</body>
+</html>
