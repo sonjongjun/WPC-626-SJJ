@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* 도깨비 PJ메인 CSS - main.css */
+
+/* 외부 CSS불러오기 */
+@import url(./reset.css);
+@import url(./core.css);
+/* 12그리드 CSS */
+@import url(./grid_12_flex.css);
