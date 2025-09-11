@@ -12,57 +12,101 @@ console.log("나, 제어문 테스트!");
         3. 점수에 따른 칭찬스티커 보이기
 **************************************/
 // 이름있는 함수를 선언적 함수라고함!
-function 점수보여줘(){
+function 점수보여줘() {
+  // 1. 함수호출확인
+  console.log("내 점수 보여줘 함수야!");
 
-    // 1. 함수호출확인
-    console.log("내 점수 보여줘 함수야!");
-    
-    // 2. 대상선정
-    // 2-1. 점수입력박스
-    var 내점수 = document.getElementById("jumsu");
-// 입력창 input의 값은 value 속성으로 읽음!
-// 2-2. 출력박스
-var 출력박스 = document.querySelector('.jexp');
+  // 2. 대상선정
+  // 2-1. 점수입력박스
+  const 내점수 = document.getElementById("jumsu");
+  // 입력창 input의 값은 value 속성으로 읽음!
+  // 2-2. 출력박스
+  const 출력박스 = document.querySelector(".jexp");
 
-// 2-3. 칭찬스티커 박스
-var 칭찬스티커 = document.querySelector('.jshow');
-//querySelector() 메서드는 선택자(클래스,아이디,태그) 모두 가능함! 하나만 선택하여 가져온다!
-//querySelectorAll() 메서드는 선택자 모두 가능하며, 여러개를 선택하여 가져온다!
-//-> 순번필요! -> item(순번)사용 
+  // 2-3. 칭찬스티커 박스
+  const 칭찬스티커 = document.querySelector(".jshow");
+  //querySelector() 메서드는 선택자(클래스,아이디,태그) 모두 가능함! 하나만 선택하여 가져온다!
+  //querySelectorAll() 메서드는 선택자 모두 가능하며, 여러개를 선택하여 가져온다!
+  //-> 순번필요! -> item(순번)사용
 
-    console.log("내점수:",내점수.value,
-        '출력박스:',출력박스);
-    
+  console.log("내점수:", 내점수.value, "출력박스:", 출력박스);
 
-    //3. 점수에 따른 if문 처리하기
-    if(내점수.value >= 90){ // 90점 이상이면
-        출력박스.innerHTML = "매우잘함!";
-        출력박스.style.color = "blue";
-        칭찬스티커.style.backgroundPosition = "50% 50%"; // 메시지 출력
-    } // if 90 end //
-    else if(내점수.value >= 80){ // 80점 이상이면
-        출력박스.innerHTML = "잘함!";
-        출력박스.style.color = "green";
-        칭찬스티커.style.backgroundPosition = "0% 50%"; // 메시지 출력
-    } // else if 80 end //
-    else if(내점수.value >= 70){ // 70점 이상이면
-        출력박스.innerHTML = "보통!";
-        출력박스.style.color = "orange";
-        칭찬스티커.style.backgroundPosition = "50% 0%"; // 메시지 출력
+  // [입력값 유효성 검사시 공통기능함수]
+  const 검사후처리해 = (경고문) => {
+    //경고문 - 경고창에 띄울 메시지
 
-    } // else if 70 end //
-    else if(내점수.value >= 60){ // 60점 이상이면
-        출력박스.innerHTML = "노력요함!";
-        출력박스.style.color = "brown";
-        칭찬스티커.style.backgroundPosition = "50% 100%"; // 메시지 출력
-    } // else if 60 end //
-    else{ // 60점 이하이면
-        출력박스.innerHTML = "재시험!";
-        출력박스.style.color = "red";
-        칭찬스티커.style.backgroundPosition = "100% 50%"; // 메시지 출력
-    } // else 60 end // 
-    
-    /*************************************** 
+    //경고창 띄우기
+    alert(경고문);
+
+    //입력값 지우기
+    내점수.value = "";
+
+    //입력창에 포커스주기
+    내점수.focus();
+
+    //칭찬스티커값 초기화
+    칭찬스티커.style.backgroundPosition = "-50% 0%";
+  }; ///////////////////////////////////경고문함수//////////////////////////
+
+  // 2.5. 입력값 유효성 검사하기
+  // 입력값이 없으면 경고 후 함수종료
+  if (내점수.value == "") {
+    //검사후처리해 함수 호출하기
+    검사후처리해("점수를 입력하세요!");
+
+    // return : 함수 종료 키워드
+    return;
+  } //if문///////
+  //숫자가 아니면 경고 후 함수종료
+  // isNaN(숫자) : 숫자가 아니면 true, 숫자이면 false
+  else if (isNaN(내점수.value)) {
+    //검사후처리해 함수 호출하기
+    검사후처리해("숫자만 입력하세요!");
+    return;
+  } // else if문 /////
+
+  // 0~100 사이의 숫자가 아니면 경고 후 함수종료
+  else if (내점수.value < 0 || 내점수.value > 100) {
+    //검사후처리해 함수 호출하기
+    검사후처리해("0~100 사이의 숫자만 입력하세요!");
+
+    //리턴문은 함수종료!
+    return;
+  } // else if문 /////
+
+  //3. 점수에 따른 if문 처리하기
+  if (내점수.value >= 90) {
+    // 90점 이상이면
+    출력박스.innerHTML = "매우잘함!";
+    출력박스.style.color = "blue";
+    칭찬스티커.style.backgroundPosition = "50% 50%"; // 메시지 출력
+  } // if 90 end //
+  else if (내점수.value >= 80) {
+    // 80점 이상이면
+    출력박스.innerHTML = "잘함!";
+    출력박스.style.color = "green";
+    칭찬스티커.style.backgroundPosition = "0% 50%"; // 메시지 출력
+  } // else if 80 end //
+  else if (내점수.value >= 70) {
+    // 70점 이상이면
+    출력박스.innerHTML = "보통!";
+    출력박스.style.color = "orange";
+    칭찬스티커.style.backgroundPosition = "50% 0%"; // 메시지 출력
+  } // else if 70 end //
+  else if (내점수.value >= 60) {
+    // 60점 이상이면
+    출력박스.innerHTML = "노력요함!";
+    출력박스.style.color = "brown";
+    칭찬스티커.style.backgroundPosition = "50% 100%"; // 메시지 출력
+  } // else if 60 end //
+  else {
+    // 60점 이하이면
+    출력박스.innerHTML = "재시험!";
+    출력박스.style.color = "red";
+    칭찬스티커.style.backgroundPosition = "100% 50%"; // 메시지 출력
+  } // else 60 end //
+
+  /*************************************** 
      [ if문 ]
     - 조건문을 검사하여 true이면
     중괄호안의 코드가 실행되는 제어문
@@ -109,4 +153,127 @@ var 칭찬스티커 = document.querySelector('.jshow');
     
         if(aa>10) my = "ㅎㅎㅎ";
     ***************************************/
-}/* 점수보여줘함수 *///////////////////////////
+} /* 점수보여줘함수 */ //////////////////////////
+
+/***************************************************************************************** 
+                            함수명 : 국번보여줘
+                            기능 : 지역명에 따른 국번을 출력
+
+*****************************************************************************************/
+function 국번보여줘() {
+  // 1. 함수호출확인
+  console.log("국번보여줘 함수야");
+
+  // 2. 대상선정
+  // 2-1. 지역입력박스
+  const 지역입력 = document.getElementById("local");
+  // 입력창 input의 값은 value 속성으로 읽음
+  let 지역명 = 지역입력.value;
+  // 2-2. 출력박스
+  const 출력박스 = document.querySelector("#info");
+//   querySelector는 #이 있어야한다!('#')
+
+  console.log("지역명:", 지역명, "출력박스", 출력박스);
+
+  // 3. 국번 switch문 처리하기
+  let 국번 = ""; //국번변수
+
+
+  switch (지역명) {
+    case "경기":
+      국번 = "031";
+      break;
+    case "부산":
+      국번 = "051";
+      break;
+    case "제주":
+      국번 = "064";
+      break;
+    case "인천":
+      국번 = "032";
+      break;
+    case "대구":
+      국번 = "053";
+      break;
+    case "광주":
+      국번 = "062";
+      break;
+    case "전북":
+      국번 = "063";
+      break;
+    case "전남":
+      국번 = "061";
+      break;
+    case "경북":
+      국번 = "054";
+      break;
+    case "경남":
+      국번 = "055";
+      break;
+    case "세종":
+      국번 = "044";
+      break;
+    case "울산":
+      국번 = "052";
+      break;
+    case "대전":
+      국번 = "042";
+      break;
+    case "충북":
+      국번 = "043";
+      break;
+    case "충남":
+      국번 = "041";
+      break;
+      case "서울":
+          국번 = "02";
+          break;
+          //   만약에 해당사항이 없으면 ? -> default
+    default:
+      국번 = "etc";
+  }////////////////////////////////////////////switch문/////////////////////////////////////////
+  console.log("국번:", 국번);
+
+// 4. 출력하기 ->삼항연산자로 출력할것
+// 삼항연산자는 (비?집:놀이동산) 형식이다
+  출력박스.innerHTML =
+  국번 == "etc" 
+  ? "등록된 지역이 아닙니다!" 
+  : `${지역명} 지역의 국번은
+  <span
+style="color:blue;
+  font-weight:bold;
+  font-size:2em;">
+  ${국번}</span>입니다!`;
+
+} /****************************************국번보여줘함수*********************************/
+
+/********************************************** 
+     [ switch case문 ]
+    - 단일조건을 분류하여 실행문을 만들어 줄때 사용하는 제어문
+
+    ((구문구조))
+    ________________________________________
+
+    switch(변수){
+        case 경우1: 실행코드; break;
+        case 경우2: 실행코드; break;
+        case 경우3: 실행코드; break;
+        ...
+        default: 실행문;
+    }
+    ________________________________________
+
+    ((구문해석))
+
+    1. 변수값에 해당하는 경우 그 값에 해당하는
+    case에 들어가서 실행코드를 실행함
+
+    2. 각 case 끝에 break 예약어를 반드시 써야함!
+    -> 안쓰면 다른 case에 또 들어가는 경우가 생김!
+    -> 일반적으로 break 키워드는 제어문을 빠져나갈때 씀!
+
+    3. default 는 if문의 else문과 비슷하여 해당 케이스가 
+    없으면 이 부분이 실행됨(단, 필요시 사용)
+    -> default문에는 break를 쓰지 않는다!
+**********************************************/
