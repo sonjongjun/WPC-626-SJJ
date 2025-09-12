@@ -6,7 +6,7 @@
     <title>Rolling Cube 3D Animation</title>
     <!-- 외부 CSS -->
     <link rel="stylesheet" href="./css/cube.css" />
-    <!-- 외부 JS -->
+    <!-- 외부 JS - defer로 html로딩후 실행-->
     <script src="./js/cube.js" defer></script>
   </head>
   <body>
@@ -33,32 +33,14 @@
     <div class="shadow"></div>
 
     <!-- 사이즈 변경  버튼 -->
-    <button
-      class="btnsize"
-      onclick="
-        // css의 변수값을 js에서 변경하기
-        document.documentElement.style.setProperty('--cube-size','300px');
-    "
-    >
-      300px
+    <button class="btn-size">
+    300px
     </button>
-    <button
-      class="btnsize"
-      onclick="
-        // css의 변수값을 js에서 변경하기
-        document.documentElement.style.setProperty('--cube-size','200px');
-    "
-    >
-      200px
+    <button class="btn-size">
+    200px
     </button>
-    <button
-      class="btnsize"
-      onclick="
-        // css의 변수값을 js에서 변경하기
-        document.documentElement.style.setProperty('--cube-size','100px');
-    "
-    >
-      100px
+    <button class="btn-size">
+    100px
     </button>
   </body>
 </html>
