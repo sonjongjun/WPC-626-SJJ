@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rolling Cube 3D Animation</title>
+    <!-- 외부 CSS -->
+    <link rel="stylesheet" href="./css/cube.css" />
+    <!-- 외부 JS -->
+    <script src="./js/cube.js" defer></script>
+  </head>
+  <body>
+    <!-- 작동버튼 -->
+    <!-- <button class="btngo">돌아!</button> -->
+
+    <!-- 큐브 : 정육면체 -->
+    <div
+      class="cube rotate-cube"
+      onmouseover="
+    document.querySelector('.shadow').style.animationPlayState='paused';
+    "
+      onmouseout="document.querySelector('.shadow').style.animationPlayState='running';"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- 큐브 그림자 연출용 박스 -->
+    <div class="shadow"></div>
+
+    <!-- 사이즈 변경  버튼 -->
+    <button
+      class="btnsize"
+      onclick="
+        // css의 변수값을 js에서 변경하기
+        document.documentElement.style.setProperty('--cube-size','300px');
+    "
+    >
+      300px
+    </button>
+    <button
+      class="btnsize"
+      onclick="
+        // css의 변수값을 js에서 변경하기
+        document.documentElement.style.setProperty('--cube-size','200px');
+    "
+    >
+      200px
+    </button>
+    <button
+      class="btnsize"
+      onclick="
+        // css의 변수값을 js에서 변경하기
+        document.documentElement.style.setProperty('--cube-size','100px');
+    "
+    >
+      100px
+    </button>
+  </body>
+</html>
