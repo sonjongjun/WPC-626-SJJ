@@ -43,10 +43,10 @@ body {
 }
 .screen {
   position: absolute;
-  top: 17.5%;
-  left: 21.5%;
-  width: 58.3%;
-  height: 50.2%;
+ top: 17.3%;
+    left: 21.4%;
+    width: 58.5%;
+    height: 50.4%;
   background-color: rgb(0, 0, 0);
 }
 /* 스크린박스 하위 아이프레임 */
