@@ -138,9 +138,32 @@ text-overflow: ellipsis;
 .banner-part{
     /* 비율셋팅 : 배너이미지크기 비율임! */
     aspect-ratio: 1380 / 598;
-    
-    /* 임시이미지 */
-    background: url(../../01.구현디자인/결과물/도깨비_배너.jpg) no-repeat center/cover;
+}
+.banner-box{
+    height: 100%;
+    overflow: hidden;
+
+}
+.banner-slide{
+    /* 플렉스박스 */
+    display: flex;
+    /* 슬라이드 개수만큼 크기설정해주기 */
+    width: calc(100%*3);
+    /* 배너이미지크기 */
+    height: 100%;
+}
+/* 배너슬라이드 li */
+.banner-slide li{
+    /* 배너 등분할설정 */
+    flex: 1;
+}
+/* 배너이미지 */
+.banner-slide img{
+    width: 100%;
+    height: 100%;
+    /* 일반이미지를 배경처럼 처리해준다.
+    비율에 맞게 박스를 가득 채움 */
+    object-fit: cover;
 }
 /***************** 2-2. 캐릭터영역 *****************/
 .cat-part{

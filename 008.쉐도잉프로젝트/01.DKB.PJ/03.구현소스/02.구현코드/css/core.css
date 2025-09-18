@@ -34,7 +34,7 @@ body {
   position: absolute;
   font-size: min(3vmax, 43px);
   color: #ccc;
-  width: 1920px;
+  width: 1320px;
   max-width: 100%;
   /* 최대 가로크기를 100%로 설정하면
   부모박스가 width 크기보다 작아질때
@@ -47,7 +47,7 @@ body {
 /* 중앙속박스 */
 .inbox {
   /* 최대가로크기 */
-  max-width: 1920px;
+  max-width: 1320px;
   /* padding: 0 20px; */
   /* 블록박스 중앙정렬 -> 마.영.오! */
   margin: 0 auto;
