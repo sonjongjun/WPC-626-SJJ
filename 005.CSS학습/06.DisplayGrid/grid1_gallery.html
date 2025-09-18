@@ -157,7 +157,6 @@
         -> grid에서도 이 속성을 사용할 수 있다! */
         /* gap: 10px 30px; */
 
-
         /* padding: 10px; */
         /* 그리드 박스 정렬 */
         /* justify-items: center;
@@ -237,7 +236,7 @@
 
       /* 그리드 구성박스 변경주기 */
 
-    /* 
+      /* 
       [ 미디어쿼리 - 그리드 개수 변경 ]
       방법) 미디어쿼리를 사용하여 특정 사이즈일때
       그리드 개수를 변경할 수 있음!
@@ -255,44 +254,60 @@
       1200px, 1000px, 800px, 500px 사이즈일때 그리드
        개수를 4,3,2,1로 변경하는 미디어쿼리를 작성해*/
 
-       
-       /* 1200px 이하 사이즈 미디어쿼리 시작 */
-       @media (max-width: 1200px) {
-         .grid {
-           grid-template-columns: repeat(4, 1fr);
-          }
+      /* 그리드 영역 조정하기 */
+      .first {
+        grid-area: 1/1/3/3;
+      }
+
+      .second {
+        grid-area: 8/3/10/5;
+      }
+
+      /* 1200px 이하 사이즈 미디어쿼리 시작 */
+      @media (max-width: 1200px) {
+        .grid {
+          grid-template-columns: repeat(4, 1fr);
         }
-        /* 1200px 이하 사이즈 미디어쿼리 끝 */
+      }
+      /* 1200px 이하 사이즈 미디어쿼리 끝 */
 
-    /* 1000px 이하 사이즈 미디어쿼리 시작 */
-    @media (max-width: 1000px) {
-      .grid {
-        grid-template-columns: repeat(3, 1fr);
+      /* 1000px 이하 사이즈 미디어쿼리 시작 */
+      @media (max-width: 1000px) {
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .second {
+          grid-area: 8/3/10/5;
+        }
       }
-    }
-    /* 1000px 이하 사이즈 미디어쿼리 끝 */
-    
-    /* 800px 이하 사이즈 미디어쿼리 시작 */
-    @media (max-width: 800px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    /* 800px 이하 사이즈 미디어쿼리 끝 */
-    
-    /* 500px 이하 사이즈 미디어쿼리 시작 */
-    @media (max-width: 500px) {
-      .grid {
-        grid-template-columns: repeat(1, 1fr);
-      }
-      /* 상품명,가격 글자크기 변경 */
-      .grid > div aside{
-        font-size: 4vw;
-      }
-    }
-    /* 500px 이하 사이즈 미디어쿼리 끝 */
+      /* 1000px 이하 사이즈 미디어쿼리 끝 */
 
-     </style>
+      /* 800px 이하 사이즈 미디어쿼리 시작 */
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }.second {
+        grid-area: 8/1/10/3;
+      }
+      }
+      /* 800px 이하 사이즈 미디어쿼리 끝 */
+
+      /* 500px 이하 사이즈 미디어쿼리 시작 */
+      @media (max-width: 500px) {
+        .grid {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        /* 상품명,가격 글자크기 변경 */
+        .grid > div aside {
+          font-size: 4vw;
+        }
+        /* 그리드 영역 조정하기 - 초기화 */
+        .first, .second{
+          grid-area: auto;
+        }
+      }
+      /* 500px 이하 사이즈 미디어쿼리 끝 */
+    </style>
   </head>
   <body>
     <!-- 타이틀 -->
@@ -306,12 +321,14 @@
       > : 자식요소
       + : 형제요소 -->
     <div class="grid">
-      <div>
-        <img src="./images/1.jpg" alt="dress" />
-        <aside>
-          <h2>상품명1</h2>
-          <h3>상품가격1</h3>
-        </aside>
+      <div class="first">
+        <div>
+          <img src="./images/1.jpg" alt="dress" />
+          <aside>
+            <h2>상품명1</h2>
+            <h3>상품가격1</h3>
+          </aside>
+        </div>
       </div>
       <div>
         <img src="./images/2.jpg" alt="dress" />
@@ -530,12 +547,14 @@
           <h3>상품가격32</h3>
         </aside>
       </div>
-      <div>
-        <img src="./images/33.jpg" alt="dress" />
-        <aside>
-          <h2>상품명33</h2>
-          <h3>상품가격33</h3>
-        </aside>
+      <div class="second">
+        <div>
+          <img src="./images/33.jpg" alt="dress" />
+          <aside>
+            <h2>상품명33</h2>
+            <h3>상품가격33</h3>
+          </aside>
+        </div>
       </div>
       <div>
         <img src="./images/34.jpg" alt="dress" />
