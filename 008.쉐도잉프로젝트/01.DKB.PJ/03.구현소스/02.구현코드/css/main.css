@@ -510,6 +510,10 @@ h1.logo::before {
 .intro-part .stit {
   padding-bottom: 0;
 }
+.intro-part .stit::before {
+  background-image: url(../images/icons/icon2.png);
+  display: none;
+}
 /* 하위제목+아이콘 박스 */
 .intro-desc {
   display: flex;
@@ -576,16 +580,67 @@ h1.logo::before {
 }
 
 /***************** 2-4. 미리보기영역 *****************/
-.view-part {
-  height: 660px;
+.preview-area {
+  min-height: 660px;
 }
+.preview-area.stit::before {
+    background-image: url(../images/icons/icon1.png);
+}
+/* 미리보기 컨텐츠 리스트 ul */
+.preview-area ul.cont-box {
+  gap: 2vh 1.5%;
+}
+/* 미리보기 컨텐츠 박스li */
+.preview-area li{
+  width: calc((100% - 4.5%) / 4);
+  /* 가로크기는 4등분 (단, gap3개의 값을 뺀다!)*/
+  aspect-ratio: 320/270;
+  box-shadow: 0 0 10px #ccc;
+  box-sizing: border-box;
+  padding: 24px 20px;
+
+}
+/* 미리보기 타이틀 */
+.preview-area li h3 {
+  font-size: 2rem;
+  padding-bottom: 14px;
+}
+/* 미리보기 내용 */
+.preview-area li p {
+  font-size: 1.5rem;
+  line-height: 1.9;
+  color: #555;
+  height: 77%;
+
+  /* 여러줄 말줄임 처리 */
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* 여러줄 처리 줄 수 */
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  cursor: pointer;
+  opacity: .6;
+}
+/* li오버시 투명도 복원 */
+.preview-area li:hover p {
+  opacity: 1;
+  color: brown;
+}
+
 /***************** 2-5. 현장포토영역 *****************/
 .real-part {
   height: 906px;
 }
+.real-part .stit::before {
+  background-image: url(../images/icons/icon3.png);
+}
 /***************** 2-6. 대표포스터영역 *****************/
 .poster-part {
   height: 654px;
+}
+.poster-part .stit::before {
+  background-image: url(../images/icons/icon4.png);
 }
 /***************** 2-7. 최신동영상영역 *****************/
 .video-part {

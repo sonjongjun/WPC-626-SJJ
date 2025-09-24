@@ -79,7 +79,19 @@ body{
     padding-bottom: 32px;
     font-size: 3.8rem;
     font-weight: normal;
+    margin-top: 80px;
 }
+/* 영역 서브제목 아이콘 가상요소로 넣기 */
+.stit::before {
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  vertical-align: -6px;
+  background: url(../images/icons/icon1.png) no-repeat center/cover;
+}
+
 
 /* IR(Images Replacement) 
 - 배경이미지 설명 숨기기 클래스 */
@@ -113,6 +125,7 @@ body{
     background-color: #ddd;
     border-radius: 5px;
 }
+
 
 
 
