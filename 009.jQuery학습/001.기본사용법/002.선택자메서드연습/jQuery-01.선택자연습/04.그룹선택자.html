@@ -73,7 +73,19 @@
 
 <!---------- jQuery code Start ---------->
 <script>
+$("p, #nav li").click(function(){
+  $(this).css({
+    "font-size":"4vw",
+    "transition":"all .4s",
+    "color":"red"
+  }).text("나야나~!");
+});
 
+$("p, #nav li").hover(function(){
+  $(this).css({
+   "cursor":"pointer"
+  });
+});
 </script>
 
 
