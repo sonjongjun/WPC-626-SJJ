@@ -8,7 +8,7 @@
 const $slide = $('.slide');
 // 보통 제이쿼리 선택할당은 변수명앞에 $로 시작
 // ex) $slide, $btnMove
-
+const $indic = $('.indic li');
 // 2. 구현하기
 // 2-1. 오른쪽 이동버튼 클릭시 기능구현
 
@@ -42,3 +42,4 @@ $slide.css({
 });//css//////////////
 
 });
+$indic.eq(seq).addClass('on').siblings().removeClass('on');

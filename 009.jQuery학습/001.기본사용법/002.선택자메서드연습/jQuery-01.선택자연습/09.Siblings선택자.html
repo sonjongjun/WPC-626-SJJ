@@ -6,7 +6,33 @@
     <!-- jQuery library -->
     <script src="../jquery-3.6.3.min.js"></script>
     <script>
+      $(() => {
+        //미션: li중 하나를 클릭하면  그 뒤의 형제요소의
+        // li들이 모두 width: 500px, height: 300px로 변경되고
+        //  배경이미지를 넣으시오.(배경이미지는 웹경로로 넣고 트랜지션 설정도 하시오.)
 
+        // 모든 li의 초기값 설정
+        $('li').css({
+          width:'100px',
+          height:'50px',
+        })
+        // 여기에 이어서 click 설정하기
+        .click((e) => {
+          $('~ li ',e.currentTarget).css({
+            width:'500px',
+            height:'300px',
+            background:"url(https://via.placeholder.com/500) no-repeat center/cover",
+            transition:"all .4s"
+          });
+        });
+
+
+
+
+
+
+
+      }); //JQuery 코드 블록!!!
     </script>
   </head>
 

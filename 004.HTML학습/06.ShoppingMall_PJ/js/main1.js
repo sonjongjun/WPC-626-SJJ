@@ -32,7 +32,7 @@ import myFn from "./my_function.js";
 // (1) 순번변수
 let seqNum = 0;
 ////////////////////////////////
-
+const $indic = $('.indic li');
 // 1. 대상선정 //////////////////
 // (1) 전체 슬라이드 박스 : .slide-box
 const slideBox = myFn.qs(".slide-box");
