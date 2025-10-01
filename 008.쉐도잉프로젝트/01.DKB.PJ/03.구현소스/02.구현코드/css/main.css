@@ -324,23 +324,28 @@
   /* 부모자격 - 이동버튼의 부모 */
 }
 .clip-box ul {
-  position: relative;
-  left: 0; /* 이동초기값 */
-  display: flex;
+  /* 스와이퍼에서 처리하므로
+  flex설정 불필요
+  트랜지션주면 방해가 된다!
+   */
+  /* position: relative; */
+  /* left: 0; 이동초기값 */
+  /* display: flex; */
   /* gap: 0 2%; */
   /* 트랜지션 */
-  transition: left 0.3s ease-out;
+  /* transition: left 0.3s ease-out; */
   user-select: none;
   -webkit-user-drag: none;
 }
 
+/* 스와이퍼 적용 랩퍼박스*/
 .clip-box li {
-  flex-basis: 25%;
-  flex-shrink: 0;
+  /* flex-basis: 25%; */
+  /* flex-shrink: 0; */
   /* 플렉스 gap 속성대신 패딩으로 처리!
     이유는? 드래그시 영역아웃현상때문! */
-  padding: 0 1.1%;
-  box-sizing: border-box;
+  /* padding: 0 1.1%; */
+  /* box-sizing: border-box; */
 }
 
 /* 동영상 이미지박스 */
