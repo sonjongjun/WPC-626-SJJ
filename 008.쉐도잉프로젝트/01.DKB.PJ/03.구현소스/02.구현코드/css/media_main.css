@@ -4,49 +4,123 @@
 
 /* 1360px 이하 미디어쿼리 시작 */
 @media screen and (max-width: 1360px) {
-    /* 인박스 패딩 변경 */
-    .inbox{
-        padding: 0 2vw;
-    }
+  /* 인박스 패딩 변경 */
+  .inbox {
+    padding: 0 2vw;
+  }
 }
 /* 1360px 이하 미디어쿼리 끝 */
 
-
 /* 1200px 이하 미디어쿼리 시작 */
 @media screen and (max-width: 1200px) {
-    /* 전체 글자 크기 변경 */
-    html{
-        font-size: 9px;
-    }
+  /* 전체 글자 크기 변경 */
+  html {
+    font-size: 9px;
+  }
 }
 /* 1200px 이하 미디어쿼리 끝 */
 
 /* 1024px 이하 미디어쿼리 시작 */
 @media screen and (max-width: 1024px) {
-    /* 전체 글자 크기 변경 */
-    html{
-        font-size: 8px;
-    }
-    /* 미리보기 파트 1줄에 3개씩*/
-    .preview-area li{
-        width: calc((100% - 1.5% *2) /3);
-    }
-    /* 현장포토&대표 포스터 : 한줄에 3개씩 */
-    .live-box ul, .poster-box ul{
-        grid-template-columns: repeat(3, 1fr);
-        grid-row: auto;
-    }
+  /* 전체 글자 크기 변경 */
+  html {
+    font-size: 8px;
+  }
+  /* 전체 메뉴박스 변경 */
+  .menu-box {
+    position: fixed;
+    top: 0;
+    /* 오른쪽 바깥에 나가있는 상태
+    -> 햄버거버튼 클릭시 화면에 등장(0으로 변경) */
+    left: 100%;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    padding-right: 0;
+
+    /* transition 부여 */
+    transition: left 0.5s ease-in-out;
+  }
+  /* 상단영역 최상위 부모인 #top-area에 클래스 on을 주면
+  메뉴박스인 .menu-box가 left값이 0%로 변경한다. */
+  #top-area.on .menu-box {
+    left: 0%;
+  }
+  /* 메뉴그룹 변경 */
+  .menu-group {
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 10vh 5vw;
+  }
+  .gnb-menu ul {
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 4vw;
+    font-size: 2.5vh;
+  }
+  .top-menu {
+    border-bottom: 3px double #000000;
+    margin-top: 5vh;
+    line-height: 4;
+    width: 85vw;
+  }
+  /* 미리보기 파트 1줄에 3개씩*/
+  .preview-area li {
+    width: calc((100% - 1.5% * 2) / 3);
+  }
+  /* 현장포토&대표 포스터 : 한줄에 3개씩 */
+  .live-box ul,
+  .poster-box ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /* 대표포스터 li 그리드 설정 초기화 */
+  .poster-box ul li {
+    /* 가상클래스로 설정된 li도 강제적용을 위해
+        !important 사용 */
+    grid-row: auto !important;
+  }
+  /* 하단영역 플레스 방향 변경 및 수직방향 정렬조정 */
+  #bottom-area .cont-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /* 모바일용 버튼 그룹박스 보이게 하기 */
+  .btn-group {
+    display: flex;
+  }
+  /* 상단영역 높이값 변경 */
+  .top-area {
+    height: 60px;
+  } 
+  /* 로고박스 스케일변경 */
+  .logo-box{
+    scale: .5;
+  }
+/* 배너버튼 스케일 조정 */
+  .abtn{
+      transform: translateY(-50%) scale(0.6);
+  }
 }
 /* 1024px 이하 미디어쿼리 끝 */
 
+
+
+
 /* 800px 이하 미디어쿼리 시작 */
 @media screen and (max-width: 800px) {
-    /* 플렉스 방향 변경 */
-    .intro-part .cont-box{
-        flex-direction: column;
-    }
-     .preview-area li{
-        width: calc((100% - 1.5% *1) /2);
-    }
+  /* 플렉스 방향 변경 */
+  .intro-part .cont-box {
+    flex-direction: column;
+  }
+  /* 미리보기 파트 : 한줄에 2개씩 */
+  .preview-area li {
+    width: calc((100% - 1.5% * 1) / 2);
+  }
+  /* 현장포토 & 대표포스터 : 한줄에 2개씩 */
+  .live-box ul,
+  .poster-box ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 /* 800px 이하 미디어쿼리 끝 */
