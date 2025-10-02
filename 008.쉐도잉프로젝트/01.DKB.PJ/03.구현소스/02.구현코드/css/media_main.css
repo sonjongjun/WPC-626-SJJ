@@ -16,6 +16,7 @@
   /* 전체 글자 크기 변경 */
   html {
     font-size: 9px;
+    overflow-x: hidden;
   }
 }
 /* 1200px 이하 미디어쿼리 끝 */
