@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>load 메서드</title>
+    <style>
+        body{
+            font-size: 4vw;
+        }
+    </style>
+    <!-- jQuery library -->
+    <script src="../jquery-3.6.3.min.js"></script>
+    <!-- JS코드구역 -->
+    <script>
+        $(()=>{
+                // 제이쿼리 load() 메서드///
+                //기존 파일을 불러와서 특정요소에 넣을수있다
+                // ㄴ>형식 : load(파일경로)
+                // -불러올 수 있는 파일형식 : html, txt, inc 등등
+                // ㄴ> 하지만 작업할 때 html형식이 아니라면 자동완성지원이 안된다.
+                // -inc형식은 text파일 형식과 유사하다.
+                // ㄴ> (부분소스파일로 많이 쓰인다.)
+
+                $('.head-sec').load('./inc/header.html');
+                $('.footer-sec').load('./inc/footer.html');
+                //텍스트형식 문서도 불러 올 수 있다!////////////
+                $('.add-sec').load('./inc/add.txt');
+        });//로드구역//////////////////////////////////////
+    </script>
+</head>
+<body>
+    <div class="head-sec">
+
+    </div>
+    <!-- 메인영역 -->
+    <main>
+        메인영역이야
+    </main>
+    <!-- 푸터영역 -->
+     <div class="footer-sec">
+        
+     </div>
+     <!--추가 불러오기 -->
+        <div class="add-sec">
+
+        </div>
+</body>
+</html>
