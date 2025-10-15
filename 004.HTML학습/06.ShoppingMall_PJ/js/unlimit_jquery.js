@@ -75,8 +75,13 @@ console.log("대상:",$slideBox,$abtn,$slide,$indic);
 // 버튼 클릭시 슬라이드 이동하기
 // 오른쪽 버튼 클릭시
 // ㄴ>원리 translateX(-100%)로 이동시키기
-$('.abtn').click(function(){
+$abtn.click(function(){
     // 버튼 구분하기
+    // 광클금지
+    if(blockClick()) return;
+
+
+
     let isR = $(this).is('.ab2');   
     console.log('오른쪽이야?',isR);
 
@@ -86,7 +91,7 @@ $('.abtn').click(function(){
     if(isR){
         $slide.animate(
             {translate:'-100%'},// CSS변경
-            400, // 시간
+            TIME_GAP, // 시간
             ()=>{ // 애니후 실행함수 시작
                 $slide // 주인공은? 슬라이드!
                 // (1) 맨앞요소 맨뒤로 이동
@@ -95,7 +100,7 @@ $('.abtn').click(function(){
                 .css({translate:'0'});
                 
             } /// 애니후 실행함수 끝 ///
-        );
+        );////animate
     } //// if //////
 
     // 2. 왼쪽 버튼일때 //////
@@ -107,11 +112,30 @@ $('.abtn').click(function(){
         .css({translate:'-100%'})
         // 오른쪽으로 슬라이드 이동시키기
         .animate(
-            {translate:'0'},
-            400);        
+            {translate:'0%'},
+            TIME_GAP
+        );        
+            // 주의사항! -> 0일 경우에도 단위를 반드시 써야
+            // 애니메이션이 잘 적용된다.
     } //// else //////
 
+    // 3.슬라이드 위치표시 블릿
+    // 1) 블릿대상 .indic li
+    // 해당 블릿은 오른쪽 버튼일때 순번1, 왼쪽일때 순번0
+    // 슬라이드의 data-seq값을 읽어오면 된다
+    let currIdx = $slide.find('li').eq(isR?1:0).attr('data-seq');
+    console.log('읽은순번:',currIdx);
+
+    
+    // 2) 블릿 li클래스 on 넣기()
+    $indic.eq(currIdx).addClass('on')
+    .siblings().removeClass('on');
+
+
 }); ////// click 메서드 //////////
+
+
+
 
 
 /******************************** 
@@ -152,17 +176,36 @@ const IV_TIME = 2000;
 const TO_TIME = 5000;
 
 // 자동호출함수 최초호출 ////
-// slideAuto();
+slideAuto();
 
 // [3] 자동호출함수 ////////////////
 function slideAuto(){
     // 지우기위해 전역변수 autoI에 할당함
     autoI = setInterval(() => {
         // 맨앞div 맨뒤로 이동
-        $target.append($target.find('div').first());
-    }, IV_TIME);
+        // 오른쪽 버튼 클릭시 작동과 동일하다.
+         $slide.animate(
+            {translate:'-100%'},// CSS변경
+            TIME_GAP, // 시간
+            ()=>{ // 애니후 실행함수 시작
+                $slide // 주인공은? 슬라이드!
+                // (1) 맨앞요소 맨뒤로 이동
+                .append($slide.find('li').first())
+                // (2) 이때 translate값 초기화
+                .css({translate:'0'});
+                
+            } /// 애니후 실행함수 끝 ///
+        );////animate
+          // 2) 블릿 li클래스 on 넣기()
+     let currIdx = $slide.find("li").eq(1).attr("data-seq");
+    // console.log('읽은순번:',currIdx);
 
-} ////// slideAuto 함수 //////
+    
+    // 2) 블릿 li클래스 on 넣기()
+    $indic.eq(currIdx).addClass("on")
+    .siblings().removeClass("on");
+
+}, IV_TIME);} ////// slideAuto 함수 //////
 
 // 이동버튼 클릭시 지우기함수 호출하기 ////
 // $('.abtn').click(clearAuto);
