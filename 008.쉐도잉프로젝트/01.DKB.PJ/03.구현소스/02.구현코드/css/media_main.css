@@ -139,6 +139,12 @@
   .logo-box{
     scale: .5;
   }
+/* 타이틀바 소속 버튼 -모바일에서 보이게 하기*/
+.title-bar button{
+display: block;
+  
+}
+
 /* 배너버튼 스케일 조정 */
   .abtn{
       transform: translateY(-50%) scale(0.6);
@@ -165,5 +171,37 @@
   .poster-box ul {
     grid-template-columns: repeat(2, 1fr);
   }
+  /* 캐릭터 소개 박스 */
+  /* 캐릭터 박스 */
+.cat-box {
+flex-wrap: wrap;
+}
+/* 직계자식요소 div 4개 */
+.cat-box > div {
+flex-basis: 49.5%;
+}
+/* 캐릭터 글자박스 변경 */
+.cat-box > div:hover aside {
+  /* 글자박스가 캐릭터 박스보다 위로 위치해야함 */
+   position: relative;
+    z-index: 1;
+    background: none;
+    height: 27vw;
+    margin-top: -27vw;
+}
+/* 캐릭터 이미지 박스 변경 */
+.cat-box > div:hover figure {
+    margin-top: 0;
+    opacity: .3;
+}
+/* 캐릭터 타이틀 변경 */
+.cat-box > div:hover aside h3 {
+    font-size: 3.2vw;
+}
+/* 캐릭터 설명 변경 */
+.cat-box > div:hover aside p {
+    font-size: 1.8vw;
+}
+
 }
 /* 800px 이하 미디어쿼리 끝 */
