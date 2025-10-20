@@ -3,16 +3,17 @@
 /* 상단, 배너, 드라마 파트메뉴,  하단 모듈 */
 
 /* 공통 요소 세팅 */
-html{
-    /* 부드러운 스크롤 세팅 */
-    scroll-behavior: smooth;
-    /* 전체 글자크기 세팅
+html {
+  /* 부드러운 스크롤 세팅 */
+  scroll-behavior: smooth;
+  /* 전체 글자크기 세팅
     rem단위 계산편의를 위해 10px로 세팅 */
-font-size: 10px;
+  font-size: 10px;
 }
-body{
-    /* 글자체 */
-    font-family: "Noto Sans KR", Malgun Gothic, dotum, "돋움", Arial, AppleGothic, Sans-serif;
+body {
+  /* 글자체 */
+  font-family: "Noto Sans KR", Malgun Gothic, dotum, "돋움", Arial, AppleGothic,
+    Sans-serif;
 }
 /***************** 1. 상단영역 *****************/
 /* 상단영역 최상위 부모박스 */
@@ -225,11 +226,10 @@ min-width: 1024px */
 @media screen and (min-width: 1024px) {
   .gnb-menu > ul > li:hover .sub-menu {
     max-height: 400px;
-  }  
+  }
 }
-  /* 최대 높이값을 컨텐츠 높이값 보다 좀 더 크게 잡으면
+/* 최대 높이값을 컨텐츠 높이값 보다 좀 더 크게 잡으면
     오버시 높이값이 내용만큼만 커지게 된다! */
-
 
 /* 패딩만 내부에 다른 블록요소를 사용함!
 -> 자식요소 숨기기 부모박스엔 패딩을 줄 수 없다! */
@@ -248,14 +248,13 @@ min-width: 1024px */
   margin-bottom: 2.4rem;
 }
 /* 타이틀바 소속 버튼 */
-.title-bar button{
-  background-color:transparent;
-  border:none;
-  font-size:2.5vh;
-  cursor:pointer;
+.title-bar button {
+  background-color: transparent;
+  border: none;
+  font-size: 2.5vh;
+  cursor: pointer;
   /* dt에서 안보이게 하기 */
   display: none;
-  
 }
 /* 서브리스트 ul */
 .sub-list ul {
@@ -292,7 +291,7 @@ min-width: 1024px */
   height: 13.8rem;
 }
 /* 모바일용 버튼 그룹박스 설정 */
-.btn-group{
+.btn-group {
   position: absolute;
   top: 50%;
   right: 5vw;
@@ -307,7 +306,7 @@ min-width: 1024px */
   background-color: transparent;
   border: none;
   /* 아이콘 설정(글자속성) */
-  font-size:  2.5rem;
+  font-size: 2.5rem;
   cursor: pointer;
   color: #222;
 }
@@ -317,10 +316,10 @@ min-width: 1024px */
 }
 /* 상단영역 최상위 부모인 #top-area에 클래스 on을 주면
   x마크보이기/햄버거는 안보이게 설정하기 */
-  #top-area.on .btn-ham i:nth-child(2) {
+#top-area.on .btn-ham i:nth-child(2) {
   display: block;
 }
- #top-area.on .btn-ham i:nth-child(1) {
+#top-area.on .btn-ham i:nth-child(1) {
   display: none;
 }
 
@@ -392,7 +391,6 @@ min-width: 1024px */
   right: 50px;
 }
 
-
 /************* 2-2.5. 드라마파트메뉴 : 스티키메뉴 ***************/
 #spart-menu {
   /* 스티키 포지션 - 상단스크롤 걸림! */
@@ -461,11 +459,15 @@ min-width: 1024px */
 }
 
 /***************** 3. 하단영역 *****************/
-.bottom-area {
+/* 겉박스 */
+#bottom-area {
+  background: url(../images/footer_bg_tvn-pc.png) no-repeat center/cover;
   border-top: 1px solid #ccc;
+}
+/* 속박스 */
+.bottom-area {
   padding-top: 20px;
   padding-bottom: 80px;
-  background: url(../images/footer_bg_tvn-pc.png) no-repeat center/cover;
 }
 
 /* 하단링크박스 */

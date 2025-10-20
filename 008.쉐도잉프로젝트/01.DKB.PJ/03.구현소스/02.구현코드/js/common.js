@@ -46,6 +46,27 @@ import bannerFn from "./main1_jquery.js";
 
 // 상단 파트에서 실행할 함수////////////////////////////
 function headerFn() {
+  /************************ 
+  //  JS로 링크 시스템 만들기!
+  ************************/
+// 대상 : 상단영역 a요소
+  const $topLink = $("#top-area a");
+  $topLink.click(function(e){ //e-이벤트 객체
+    // 기본이동 막기
+    e.preventDefault();
+    // 클릭된 a요소의 글자 읽기
+    let aTxt = $(this).text();
+    console.log(aTxt);
+    // 분기하여 이동
+    // 이동은 location.href로 이동 = '링크주소';
+    switch(aTxt){
+      case"로그인" : location.href="./login.html"; break;
+      case"회원가입" : location.href="./member.html"; break;
+    }//switch문
+  });/////// click //////////////
+
+
+
   //도깨비 PJ메인 JS - main.js
 
   //1. 큐브로고 박스 일정 간격으로 클래스 넣고 빼기
