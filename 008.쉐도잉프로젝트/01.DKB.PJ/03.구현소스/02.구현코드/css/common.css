@@ -409,6 +409,7 @@ min-width: 1024px */
   top: 0;
   background-color: #fff;
   z-index: 999;
+  transition: top 0.3s ease-in-out;
 }
 /* 인박스 높이값 초기화 */
 .spart-menu.inbox {

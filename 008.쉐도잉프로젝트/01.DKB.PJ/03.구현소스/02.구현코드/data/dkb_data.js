@@ -259,7 +259,7 @@ const previewData = [
   
 ];
 
-console.log("미리보기 데이터:", previewData.reverse)
+// console.log("미리보기 데이터:", previewData.reverse)
 // 2. 현장포토 리스트 데이터
 /************************************* 
     [ 데이터항목 : ]

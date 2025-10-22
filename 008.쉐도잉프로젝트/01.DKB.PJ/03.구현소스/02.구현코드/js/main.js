@@ -8,12 +8,12 @@ import {
   posterData,
   clipData
 } from "../data/dkb_data.js";
-console.log(catData);
+//console.log(catData);
 
 //스크롤 액션 불러와서 실행하기
 import scrollAnimation from "./scroll_action.js";
 // 콘솔 찍어보기
-console.log(scrollAnimation);
+//console.log(scrollAnimation);
 // 호출하기~
 scrollAnimation();
 /******************************************************** 
@@ -24,7 +24,7 @@ scrollAnimation();
 // 데이터 바인딩 이라고 한다!
 // (1) 바인딩 대상 : .preview-box .cont-box
 const previewArea = document.querySelector(".preview-area ul.cont-box");
-console.log(previewArea);
+//console.log(previewArea);
 // (2) 바인딩 데이터 : previewData
 // -> 요구사항 : 기존 배열데이터를 내림차순으로 정리하여 8개의 데이터만
 // 다시 변수에 할당하기
@@ -42,7 +42,7 @@ for (let i = 0; i < 8; i++) {
   newPreviewData.push(previewData[i]);
   // push(값) -> 배열에 값 추가
 }
-console.log(newPreviewData);
+//console.log(newPreviewData);
 
 
 // (3) 반복구조의 예시
@@ -69,7 +69,7 @@ newPreviewData.map(
   *********************************/
 // 바인딩 대상: .cat-box
 const catBox = document.querySelector(".cat-box");
-console.log(catBox);
+////console.log(catBox);
 // 바인딩 데이터: catData
 
 // 데이터 바인딩 태그구조:
@@ -143,7 +143,7 @@ catBox.innerHTML = catData
 ********************************************************/
 //(1) 바인딩 대상 : .live-box
 const liveBox = document.querySelector(".live-box");
-console.log(liveData);
+////console.log(liveData);
 //(2) 바인딩 데이터 : liveData
 // (3) 바인딩 태그구조
 /* 
@@ -186,7 +186,7 @@ liveBox.innerHTML =
 ********************************************************/
 //(1) 바인딩 대상 : .poster-box
 const posterBox = document.querySelector(".poster-box");
-console.log(posterData);
+////console.log(posterData);
 //(2) 바인딩 데이터: posterData
 // (3) 바인딩 태그구조
 /* 
@@ -225,7 +225,7 @@ posterBox.innerHTML =
 
 ********************************************************/
 const clipBox = document.querySelector(".clip-box");
-console.log(clipData);
+////console.log(clipData);
 // (2) 바인딩 데이터: clipData
 // (3) 바인딩 태그구조
 
@@ -316,13 +316,13 @@ var videoSwiper = new Swiper(".clip-box", {
 // 선택시 주의 : .ab1, .ab2가 배너에도 있다
 const btnPrev = document.querySelector("#video-part .ab1");
 const btnNext = document.querySelector("#video-part .ab2");
-console.log(btnPrev, btnNext);
+//console.log(btnPrev, btnNext);
 
 // 이전 버튼은 처음 로딩시 숨기기
 btnPrev.style.display = "none";
 
 btnNext.addEventListener("click", () => {
-  console.log("다음버튼 클릭");
+  //console.log("다음버튼 클릭");
   videoSwiper.slideNext();
 });
 
@@ -332,8 +332,8 @@ btnPrev.addEventListener("click", () => {
 });
 
 videoSwiper.on("slideChange", () => {
-  console.log("맨처음?", videoSwiper.isBeginning);
-  console.log("맨끝?", videoSwiper.isEnd);
+  //console.log("맨처음?", videoSwiper.isBeginning);
+  //console.log("맨끝?", videoSwiper.isEnd);
   // 맨처음인가? 맨끝인가?에 따른 분기
   if (videoSwiper.isBeginning) {
     btnPrev.style.display = "none";

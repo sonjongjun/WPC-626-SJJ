@@ -165,8 +165,26 @@ $(".btn-up").click(function(e){
     // 변경대상 : 상단영역 .header
     const header = document.querySelector("#top-area");
     const stkMenu = document.querySelector("#spart-menu");
-    // 스티키 세팅값
-    let stkValue = 122;
+    
+        // 스티키 세팅값
+        let stkValue = 122;
+
+    // 가로크기를 체크하여 stkValue를 변경하는 함수 만들기
+    const checkWidth = () => {
+      // 윈도우 가로크기 읽어오기 : window.innerWidth
+      //만약 윈도우의 가로크기가 1024보다 작으면 크기값을 60으로 변경    
+    window.innerWidth <= 1024 ? (stkValue = 60) : (stkValue = 122);
+    };// checkWidth 함수
+
+    // 처음로딩시 가로크기 체크함수 호출!!
+    checkWidth();
+    // 화면크기 변경시 (resize) 이벤트 만들기 가로크기 체크함수 호출
+    window.addEventListener("resize", checkWidth);
+    // resize 이벤트는 브라우저 윈도우 화면크기를 변경 할 때 마다 발생한다.
+
+
+
+
 
     // 스크롤 방향 알아내는 원리:
     // (1) 아랫방향
