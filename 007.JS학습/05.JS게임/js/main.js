@@ -83,18 +83,18 @@ function goGame() {
   // (2) 기능별 분기하기 ////////////////
   // (2-1) '토끼출발'일 경우
   if (btxt === "토끼출발") {
-  goR1();
+    goR1(); // 토끼자동이동함수 호출
   } /// if ///
   // (2-2) '거북출발'일 경우
   else if (btxt === "거북출발") {
-    t1pos+=T1_NUM; // 16px씩증가
+    t1pos += T1_NUM; // 16px씩증가
     t1.style.left = t1pos + "px";
   } /// else if ///
-//   2-3'처음으로'일 경우
-else{
+  // (2-3) '처음으로'일 경우
+  else {
     // 페이지 리로드하기
     location.reload();
-}//else//////////////////////
+  } /// else ///
 
 } /////////// goGame 함수 ////////////
 
@@ -104,22 +104,23 @@ else{
  ***********************************/
 // 인터발지우기용 변수
 let autoI;
-// console.log('autoI할당전:',autoI);
+console.log('autoI할당전:',autoI);
 // -> undefined는 if문에서 false처리됨!
 function goR1() {
-    // 인터발 한번만 실행하기 위해
+  // 인터발 한번만 실행하기 위해
   // 인터발을 할당한 변수가 false일때만
   // 실행하도록 if문을 설정!
-  if(!autoI){ // 이미 실행중이라면 종료시키기
-  console.log('토끼출발');
 
-//   인터벌함수
-autoI = setInterval(() => {
-      r1pos++; // 1씩증가
+  // 한번 변수할당이 되었으면 true가 되어서 return!
+  if(autoI) return;
+    console.log('토끼자동출발!');
+
+  // 인터발함수
+  autoI = setInterval(() => {
+    r1pos++; // 1씩증가
     r1.style.left = r1pos + "px";
-},10);
+  }, 10);
 
-}
 } ///////// goR1함수 //////////////////
 
 /***************************************** 
