@@ -125,24 +125,25 @@ $btns.hide().first().show();
 
 // 3. 미니언즈 공통 기능함수 ///////////////////
 const actMini = (el, seq, fn) => {
-  // el - 클릭된 버튼요소
-  // seq - 이동할 li 순번(번호)
-  // fn - 이동후 실행할 콜백함수
+  // el : 클릭된 버튼요소
+  // seq : 이동할 li방 순번
+  // fn : 이동후 실행할 콜백함수
 
-  // 메시지 숨기기
+  console.log("이동방순번:", seq);
+
+  // 1. 메시지 숨기기
   $msg.fadeOut(300);
 
-  // 2.클릭된 버튼 자신 숨기기
+  // 2. 클릭된 버튼 자신 숨기기
   $(el).slideUp(300);
 
-  // 3. 미니언즈 8번방으로 이동하기
-  // 방의 위치 알아내기
-  // ㄴ> 요소의 위치는 offset().top / offset().left메서드
+  // 3. 방의 위치 알아내기
+  // -> 요소의 위치는 offset().top / offset().left 메서드 사용
   let myRoom = {}; // 위치정보 객체
-  let myTarget = $room.eq(seq); // n번째 방
+  let myTarget = $room.eq(seq); // n번방
   myRoom.top = myTarget.offset().top;
-  //방 중앙에 미니언즈가 오도록 방 크기의 절반만큼 이동하고 자기크기의
-  //절반만큼 빼기
+  // 방 중앙에 오도록 방크기의 절반만큼 이동하고 자기크기의
+  // 절반만큼 빼줌!
   myRoom.left = myTarget.offset().left + myTarget.width() / 2 - $mi.width() / 2;
   console.log("n번방위치:", myRoom);
 
@@ -152,43 +153,153 @@ const actMini = (el, seq, fn) => {
       top: myRoom.top,
       left: myRoom.left,
     },
-    800,
-    "easeOutElastic", //이징
+    800, // 시간
+    "easeOutElastic", // 이징
     fn // 이동후 콜백함수
   );
   // animate({CSS설정},시간,이징,함수);
-}; // actMini 함수 //////////////
+}; ///////////// actMini 함수 ///////////////
 
 // 4. 버튼 클릭하여 기능수행하기 ////////////////
 // (4-1) "들어가기" 버튼 클릭시
-$btns.first().click(function () {
-    // 버튼별 기능 구현하기
-let fn = () => {//이동 후 콜백함수
+$btns
+  .first()
+  .click(function () {
+    // 버튼별 기능구현하기 //////////////
+    let fn = () => {
+      // 이동후 콜백함수
 
-    // 5. 메시지 변경 후 나타나기
-    // -> 방번호와 같은 순번 메시지
-    // -> 도착 1초후 나타나기
-    $msg.html(msgTxt[8]).delay(1000).fadeIn(300);
+      // [1] 메시지 변경후 나타나기
+      // -> 방번호와 같은 순번 메시지
+      // -> 도착 1초후 나타나기
+      $msg
+        .html(msgTxt[8])
+        .delay(1000)
+        .fadeIn(300, () => {
+          // 콜백함수
+          // [2] 다음버튼 보이기
+          $(this).next().fadeIn(300);
+        });
+    }; // fn 함수 끝 //////////////
 
-    // 다음버튼 보이기
-    $(this).next().fadeIn(300);
-};//fn 함수 /////////////////
+    // 3. 미니언즈 공통 기능함수 호출하기
+    actMini(this, 8, fn);
+  }) /////////// click //////////////
 
-// 3.미니언즈 공통 기능함수 호출하기
-actMini(this, 8, fn);
-})
-//다음 버튼
-.next()
-.click(function () {
-     // 버튼별 기능 구현하기
-let fn = () => {//이동 후 콜백함수
+  // (4-2) "옆방으로!" 버튼 클릭시
+  .next()
+  .click(function () {
+    // 버튼별 기능구현하기 //////////////
+    let fn = () => {
+      // 이동후 콜백함수
 
-    // 5. 메시지 변경 후 나타나기
-    // -> 방번호와 같은 순번 메시지
-    // -> 도착 1초후 나타나기
-    $msg.html(msgTxt[9]).delay(1000).fadeIn(300);
-};
+      // [1] 좀비나타나기 : 현재방의 좀비선택
+      $room
+        .eq(9)
+        .find(".mz") // 좀비선택
+        .delay(1000) // 1초후
+        .fadeIn(300, () => {
+          // 좀비등장후 콜백
+          // [2] 메시지 나타나기
+          $msg.html(msgTxt[9]).css({ left: "-100%" }).fadeIn(300);
 
-// 3.미니언즈 공통 기능함수 호출하기
-actMini(this, 9, fn);
-})
+          // [3] 다음버튼 보이기
+          $(this).next().fadeIn(300);
+        }); /////// fadeIn ////////////
+    }; // fn 함수 끝 //////////////
+
+    // 3. 미니언즈 공통 기능함수 호출하기
+    actMini(this, 9, fn);
+  }) /////////// click ////////////////
+
+  // (4-3) "윗층으로 도망가!" 버튼 클릭시
+  .next()
+  .click(function () {
+    // 버튼별 기능구현하기 //////////////
+    let fn = () => {
+      // 이동후 콜백함수
+      // [1] 첫번째 메시지 나타나기
+      $msg
+        .html(msgTxt[7][0])
+        .delay(500) // 0.5초후
+        .fadeIn(300) // 나타나기
+        .delay(2000) // 2초후
+        .fadeIn(300, () => {
+          // 다시 나타나기
+          // [2] 좀비 나타나기 : 7번방의 좀비
+          $room
+            .eq(7)
+            .find(".mz") // 좀비선택
+            .delay(1000) // 1초후
+            .fadeIn(300, 
+              // function() { // 일반익명함수 this는 좀비!
+              () => { // 일반익명함수 this는 좀비!
+              console.log('this의미:', this);
+              // 좀비등장후 콜백
+              // [3] 다음 메시지 나타나기
+              $msg.html(msgTxt[7][1]);
+              // [4] 다음버튼 보이기
+              $(this).next().fadeIn(300);
+            }); /////// fadeIn ////////////
+        }); ///////// fadeIn ////////////
+    }; // fn 함수 끝 //////////////
+
+    // 3. 미니언즈 공통 기능함수 호출하기
+    actMini(this, 7, fn);
+  }) /////////// click ////////////////
+
+
+  // (4-4) "다시옆방으로!" 버튼 클릭시
+  .next()
+  .click(function () {
+    // 버튼별 기능구현하기 //////////////
+    let fn = () => {
+      // 이동후 콜백함수
+      // [1] 첫번째 메시지 보이기
+      $msg
+        .html(msgTxt[6][0])
+        .delay(500) // 0.5초후
+        .fadeIn(300) // 나타나기
+        .delay(2000) // 2초후
+        .fadeIn(300, () => {
+          // [2] 두번째 메시지 보이기
+          $msg.html(msgTxt[6][1]);
+          // [3] 다음버튼 보이기
+          $(this).next().fadeIn(300);
+        })
+    }; // fn 함수 끝 //////////////
+
+    // 3. 미니언즈 공통 기능함수 호출하기
+    actMini(this, 6, fn);
+  }) /////////// click ////////////////
+
+  // (4-5) "무서우니 윗층으로!" 버튼 클릭시
+  .next()
+  .click(function () {
+    // 버튼별 기능구현하기 //////////////
+    let fn = () => {
+      // 이동후 콜백함수
+      // [1] 여러 메시지를 순차적으로 보이게하기
+      $msg
+      .html(msgTxt[4][0][0])
+        .fadeIn(200)
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][1]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][2]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][3]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][4]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][5]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][6]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][7]))
+      
+    }; // fn 함수 끝 //////////////
+
+    // 3. 미니언즈 공통 기능함수 호출하기
+    actMini(this, 4, fn);
+  }) /////////// click ////////////////
