@@ -298,7 +298,16 @@ $btns
         .delay(500)
         .fadeIn(200,()=>$msg.html(msgTxt[4][0][7]))
       
-    }; // fn 함수 끝 //////////////
+        //[2] 7번방의 좀비 윗층으로 뛰어오른후 물기
+        $room
+        .eq(7)
+        .find(".mz") // 좀비선택
+        .animate({
+          top: "-100%" // 위로 100px 이동
+        },500,'easeOutBounce')
+        .delay(500)
+        .animate({right: '100%'},1500,'easeOutElastic',()=>{});
+      }; // fn 함수 끝 //////////////
 
     // 3. 미니언즈 공통 기능함수 호출하기
     actMini(this, 4, fn);
